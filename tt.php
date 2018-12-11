@@ -66,8 +66,6 @@ if (!$lay){$lay = 1;}
 $title = explode('<title>',$title);
 $title = explode('</title>',$title[1]);
 $title = trim($title[0]);
-$title = explode('-',$title);
-$title = trim($title[0]);
 
 
 $nd = curl_exec($curl);
