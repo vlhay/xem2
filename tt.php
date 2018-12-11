@@ -24,13 +24,13 @@ $url =  str_replace('http://m.','',$url);
 $url =  str_replace('http://','',$url);
 
 $url =  str_replace('https://','',$url);
-$url =  str_replace($url,'http://'.$url ,$url);
+$url =  str_replace($url,'https://'.$url ,$url);
 $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
 $vll = $url;
-$vll =  str_replace('http://','',$vll);
+$vll =  str_replace('https://','',$vll);
 $vll =  str_replace('hentai24h.org/','',$vll);
 $vll =  str_replace('.html','',$vll);
 
