@@ -15,13 +15,15 @@
 <?php
 if (!isset($_GET['url']))
 {
-echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="get">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="get">Url: <input name="url" type="text"><input name="sotrang" type="text"><input type="submit" value="Leech" ></form>';
 }
 else
 {
 $url = $_GET['url'];
 $url =  str_replace('http://m.','',$url);
 $url =  str_replace('http://','',$url);
+
+$url =  str_replace('https://','',$url);
 $url =  str_replace($url,'http://'.$url ,$url);
 $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
@@ -29,57 +31,27 @@ curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
 $vll = $url;
 $vll =  str_replace('http://','',$vll);
-$vll =  str_replace('hentailx.com/','',$vll);
+$vll =  str_replace('hentai24h.org/','',$vll);
 $vll =  str_replace('-1.html','',$vll);
 
 
-$dow = curl_exec($curl);
-$dow = explode('Thể loại:',$dow);
-$dow = explode('Theo dõi:',$dow[1]);
-$dow =  str_replace('</a>',',' ,$dow);
-$dow = trim($dow[0]);
-$dow = strip_tags($dow,'');
-$dow = trim($dow);
 
-$key = curl_exec($curl);
-$key = explode('<meta name="Keywords" content="',$key);
-$key = explode('<meta name="copyright"',$key[1]);
-$key = preg_replace('#<img src="(.*?)" alt="(.*?)" />#is',"<option value='$1'>$1</option>",$key);
-$key = str_replace('>','',$key);
-$key = str_replace('/','',$key);
-$key = str_replace('"','',$key);
-$key = trim($key[0]);
-$key = strip_tags($key,'');
-
-$des = curl_exec($curl);
-$des = explode('<meta name="description" content="',$des);
-$des = explode('<link rel="canonical"',$des[1]);
-$des = preg_replace('#<img src="(.*?)" alt="(.*?)" />#is',"<option value='$1'>$1</option>",$des);
-$des = str_replace('"/>','',$des);
-$des = str_ireplace('gaixinh9.com','truyenhay.botay.in',$des);
-$des = str_replace('<p>','',$des);
-$des = trim($des[0]);
-$des = strip_tags($des,'<img>,<br>,<b>,<option>,<u>,<strong>');
+$sotrang = $url = $_GET['sotrang'];
 
 
 
 $thumb = curl_exec($curl);
-$thumb = explode('<div class="thumbnail row list-group-item">',$thumb);
-$thumb = explode('</div></div><!-- Detail Images END -->',$thumb[1]);
-$thumb = preg_replace('#<img width="(.*?)" height="(.*?)" onerror="(.*?)" src="(.*?)" class="(.*?)" alt="(.*?)" itemprop="(.*?)" />#is',"<option value='$4'>$4</option>",$thumb);
-$thumb = preg_replace("#<img src='(.*?)' alt='(.*?)'/>#is",'<option value="$1">$1</option>',$thumb);
-$thumb = preg_replace('#<img src="(.*?)" alt="(.*?)">#is',"<option value='$1'>$1</option>",$thumb);
+$thumb = explode('<div class="book">',$thumb);
+$thumb = explode('<div class="info">',$thumb[1]);
+$thumb = strip_tags($thumb,'<img>');
 $thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option value='$2'>$2</option>",$thumb);
-$thumb = str_replace('</div>','',$thumb);
-$thumb = str_replace('</p>','',$thumb);
-$thumb = str_replace('<p>','',$thumb);
 $thumb = trim($thumb[0]);
-$thumb = strip_tags($thumb,'<img>,<option>');
+
 
 
 $url1= "'$url";
 
-$title = curl_exec($curl);
+$title = curl_exec($curl);		
 $lay = explode('update <a href="/doc-truyen/'.$vll.'-chapter-',$title);
 $lay = explode('.html" class="chap-link">Chapter',$lay[1]);
 $lay = trim($lay[0]);
@@ -167,25 +139,24 @@ echo '
    ';
 if($kt == 1)
 {
-$cuoi = '<div class="container reading-pagination" id="reading-pagination-bottom">';
+$cuoi = '<hr class="chapter-end"/>';
 }
 else {
-$cuoi = '<div class="container reading-pagination" id="reading-pagination-bottom">';
+$cuoi = '<hr class="chapter-end"/>';
 }
 $bv = curl_init();
-for ($i= 1; $i <= $kt ; $i++) { 
-curl_setopt ($bv, CURLOPT_URL, 'http://hentailx.com/doc-truyen/'.$vll.'-chapter-'.$i.'.html');
+for ($i= 1; $i <= $sotrang ; $i++) { 
+curl_setopt ($bv, CURLOPT_URL, 'https://hentai24h.org/'.$vll.'/chap-'.$i.'.html');
 curl_setopt ($bv, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($bv, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
 $bai = curl_exec($bv);
-$bai = explode('<div class="container" id="content_chap">',$bai);
+$bai = explode('<div class="content-child">',$bai);
 $bai = explode($cuoi,$bai[1]);
 $bai = trim($bai[0]);
 $bai = strip_tags($bai,'<p>,<b>,<i>,<u>,<strong>,<img>');
-$bai = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]$2[/img]
-',$bai);
+$bai = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]$2[/img]',$bai);
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
-$bai = preg_replace('/(truyenvip.pro|truyenvip)/i', 'Top18.Viwap.Com', $bai);
+$bai = preg_replace('/(hentai24h.org|truyenvip)/i', 'thichtruyentranh.viwap.com', $bai);
 echo '  <textarea name="content" id="content" rows="25">'.$bai.'</textarea>  ';
 }
 curl_close($bv);
