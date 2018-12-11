@@ -157,7 +157,7 @@ $bai = strip_tags($bai,'<p>,<b>,<i>,<u>,<strong>,<img>');
 $bai = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]$2[/img]',$bai);
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
 $bai = preg_replace('/(hentai24h.org|truyenvip)/i', 'thichtruyentranh.viwap.com', $bai);
-echo '  <textarea name="content" id="content" rows="25">https://hentai24h.org/'.$vll.'/chap-'.$i.'.html'.$bai.'</textarea>  ';
+echo '  <textarea name="content" id="content" rows="25">'.$bai.'</textarea>  ';
 }
 curl_close($bv);
 
