@@ -55,6 +55,4 @@ if (isset($_GET['url']) && strstr($_GET['url'], 'xvideos.com') != null) {
 header('Location: '.$_SERVER["HTTP_REFERER"].'/?url='.$urll.'');
   
 }
-?><?php
-echo json_decode(getXvideo($url))->mp4high;
 ?>
