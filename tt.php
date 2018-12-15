@@ -160,10 +160,11 @@ $bai = strip_tags($bai,'<img>');
 $bai = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]$2[/img]',$bai);
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
 //$bai = preg_replace('/(hentai24h.org|truyenvip)/i', 'thichtruyentranh.viwap.com', $bai);
-echo ' <div class="col-xs-4 col-sm-4 col-md-4 col-ld-4"><form action="http://thichtruyentranh.viwap.com/manager/chap/'.$idt.'" method="post"> Truyen goc: <input type="text" name="idt" value="'.$idt.'" maxlength="300">
-Nội dung: <textarea name="content" id="content" rows="25">'.$bai.'</textarea>
-<input type="checkbox" name="comment" value="1" checked> Cho phép bình luận
-<button type="submit" class="btn btn-primary btn-block">Đăng bài</button></form></div>';
+echo ' <div class="col-xs-4 col-sm-4 col-md-4 col-ld-4"><div clss="list"><form action="http://thichtruyentranh.viwap.com/manager/chap/'.$idt.'" method="post">
+<div clss="list">Truyen goc: <input type="text" name="idt" value="'.$idt.'" maxlength="300"></div>
+<div clss="list">Nội dung: <textarea name="content" id="content" rows="25">'.$bai.'</textarea></div>
+<div clss="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
+<div clss="list"><button type="submit" class="btn btn-primary btn-block">Đăng bài</button></form></div></div></div>';
 }
 curl_close($bv);
 
