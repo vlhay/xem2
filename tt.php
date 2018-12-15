@@ -41,10 +41,11 @@ $sotrang = $url = $_GET['sotrang'];
 
 
 $thumb = curl_exec($curl);
-$thumb = explode('<div class="book">',$thumb);
-$thumb = explode('<div class="info">',$thumb[1]);
-$thumb = strip_tags($thumb,'<img>');
-$thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option value='$2'>$2</option>",$thumb);
+$thumb = explode('<<meta property="og:image" content="',$thumb);
+$thumb = explode('<meta property="og:image:width" content',$thumb[1]);
+	
+$thumb = str_replace('" />','',$thumb);
+$thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"$2",$thumb);
 $thumb = trim($thumb[0]);
 
 
@@ -127,11 +128,8 @@ echo '
 		    </select>  
     <br />
     Thumbnail<br />  
-     <select name="thumb">  
-		   <optgroup>	
-	'.$thumb.'
-              		 </optgroup>			
-		    </select>  
+     <input name="thumb" value="'.$thumb.'"/>
+              		
     <br />
     Nội dung:<br />  
    ';
