@@ -41,7 +41,7 @@ $sotrang = $url = $_GET['sotrang'];
 
 
 $thumb = curl_exec($curl);
-$thumb = explode('<<meta property="og:image" content="',$thumb);
+$thumb = explode('<meta property="og:image" content="',$thumb);
 $thumb = explode('<meta property="og:image:width" content',$thumb[1]);
 	
 $thumb = str_replace('" />','',$thumb);
