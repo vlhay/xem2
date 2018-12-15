@@ -51,7 +51,7 @@ function getXvideo($url)
 if (isset($_GET['url']) && strstr($_GET['url'], 'xvideos.com') != null) {
     $url = $_GET['url'];
     $urll=json_decode(getXvideo($url))->mp4high;
-header('Location: http://xemlasuong.viwap.com/code?url='.$urll.'');
+header('Location: http://xemlasuong.viwap.com/code/?url='.$urll.'');
   
 }
 ?><?php
