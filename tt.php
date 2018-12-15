@@ -158,6 +158,7 @@ $bai = explode($cuoi,$bai[1]);
 $bai = trim($bai[0]);
 $bai = strip_tags($bai,'<img>');
 $bai = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]$2[/img]',$bai);
+$bai = preg_replace('#<img(.*?)src='(.*?)'(.*?)>#is','[img]$2[/img]',$bai);
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
 //$bai = preg_replace('/(hentai24h.org|truyenvip)/i', 'thichtruyentranh.viwap.com', $bai);
 echo ' <div class="col-xs-6 col-sm-4 col-md-3"><div clss="list"><br><br>Chap '.$i.'<form action="http://thichtruyentranh.viwap.com/manager/chap/'.$idt.'" method="post">
