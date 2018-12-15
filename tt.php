@@ -15,7 +15,8 @@
 <?php
 if (!isset($_GET['url']))
 {
-echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="get">Url: <input name="url" type="text"><input name="sotrang" type="text"><input type="submit" value="Leech" ></form>';
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="get">Url: <input name="url" type="text"><input name="sotrang" type="text">
+<br>idt:<input name="idt" type="text"><input type="submit" value="Leech" ></form>';
 }
 else
 {
@@ -37,7 +38,7 @@ $vll =  str_replace('.html','',$vll);
 
 
 $sotrang = $url = $_GET['sotrang'];
-
+$idt = $_GET['idt'];
 
 
 $thumb = curl_exec($curl);
@@ -117,13 +118,13 @@ echo '
 <h3>Viết bài</h3>
 <div class="box">
   
-        <form action="http://top18.viwap.com/namon" method="post">
+        <form action="http://thichtruyentranh.viwap.com/manager/post" method="post">
     Tiêu đề:<br />  	
     <input name="ten" value="Truyện Hentai '.$title.'"><br />
     Thể loại:<br />  
     <select name="category">  
 		      		<optgroup label="Giải trí">	
-				              		<option value="4">Truyện Hentai</option>
+				              		<option value="2">Truyện Hentai</option>
               				</optgroup>
 		    </select>  
     <br />
@@ -132,6 +133,12 @@ echo '
               		
     <br />
     Nội dung:<br />  
+    <textarea name="content" id="content" rows="25">Đọc Truyện Hentai '.$title.' cập nhật liên tục tại Thichtruyentranh.viwap.com</textarea>
+        <br />
+    <input type="checkbox" name="comment" value="1" checked> Cho phép bình luận
+     <button type="submit" class="btn btn-primary btn-block"id="eow">Đăng bài</button></div>
+    </form> 
+    
    ';
 if($kt == 1)
 {
@@ -153,7 +160,10 @@ $bai = strip_tags($bai,'<img>');
 $bai = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]$2[/img]',$bai);
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
 //$bai = preg_replace('/(hentai24h.org|truyenvip)/i', 'thichtruyentranh.viwap.com', $bai);
-echo '  <textarea name="content" id="content" rows="25">'.$bai.'</textarea>  ';
+echo ' <form action="http://thichtruyentranh.viwap.com/manager/chap/'.$idt.'" method="post"> <div class="list-group-item">Truyen goc: <input type="text" name="idt" value="$idt" maxlength="300"></div>
+<div class="list-group-item">Nội dung: <textarea name="content" id="content" rows="25">'.$bai.'</textarea></div>
+<div class="list-group-item"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
+<div class="list-group-item"><center><button type="submit" class="btn btn-primary btn-block">Đăng bài</button></form></center></div>';
 }
 curl_close($bv);
 
@@ -162,13 +172,7 @@ curl_close($bv);
 $t= strip_tags($bai,'');
 
 $f= substr( $t, 0, 500);
-echo '</textarea>
-    <br />
-    <input type="checkbox" name="comment" value="1" checked> Cho phép bình luận
-     <button type="submit" class="btn btn-primary btn-block"id="eow">Đăng bài</button></div>
-    </form>  
-    
-</div> '; 
+
 
 }
 
