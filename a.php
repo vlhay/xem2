@@ -33,8 +33,6 @@ $title = curl_exec($curl);
 $title = explode('<title>',$title);
 $title = explode('</title>',$title[1]);
 $title = trim($title[0]);
-$title = explode('- Gai xinh -',$title);
-$title = trim($title[0]);
 
 
 
@@ -43,13 +41,6 @@ $lay = curl_exec($curl);
 $lay = explode('"720","videoUrl":"',$lay);
 $lay = explode('"},{"defaultQuality":true,"format":"mp4","quality":"480","videoUrl":"',$lay[1]);
 $lay = trim($lay[0]);
-$lay = strip_tags($lay);
-$thum = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>$2</option>",$lay);
-$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"[img]$2[/img]",$lay);
-$lay =  str_ireplace('GaiXinhXinh.Com','Top18.ViWap.Com' ,$lay);
-$lay = strip_tags($lay,'<img>,<br>');
-$lay = trim($lay);
-$lay =  str_replace('Tải ảnh','' ,$lay);
 $lay = trim($lay);
 curl_close($curl);
 
