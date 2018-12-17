@@ -1,20 +1,13 @@
 
 <?php
-$url = $_GET['url']; ///Trang cần leech
-$contents = file_get_contents($url);
-//$link240 = explode("240: '",$contents);
-//$link240q = explode("',",$link240[1]);
-//$link480 = explode("480: '",$contents);
-//$link480q = explode("',",$link480[1]);
-$linkvideo = explode('720","videoUrl":"',$contents);
-$linkvideoq = explode('"},',$linkvideo[1]);
-//$l240 = $link240q[0];
-//$l480 = $link480q[0];
-$link = $linkvideoq[0];
-$link =  str_replace('&','@',$link);
+$url = $_GET['url'];
+$curl = curl_init();
+curl_setopt ($curl, CURLOPT_URL, $url);
+curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+$link = curl_exec($curl);
+$link = explode('<title>',$title);
+$link = explode('</title>',$title[1]);
+$link = trim($title[0]);
 
-// show link ra
-//echo '240 : '.$l240.'<br/>';
-//echo '480 : '.$l480.'<br/>';
-echo '720 : '.$link.'<br/>';
+echo ''.$title.'';
 ?>
