@@ -12,7 +12,7 @@ $linkvideoq = explode('"},',$linkvideo[1]);
 //$l480 = $link480q[0];
 $link = $linkvideoq[0];
 $link =  str_replace('&','@',$link);
-$link =  str_replace('\','',$link);
+
 // show link ra
 //echo '240 : '.$l240.'<br/>';
 //echo '480 : '.$l480.'<br/>';
