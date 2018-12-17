@@ -17,15 +17,15 @@
 	    
 if (!isset($_GET['url']))
 {
-echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="get">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="post">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
 }
 else
 {
 
-$url = $_GET['url'];
+$url = $_POST['url'];
 $url =  str_replace('http://m.','',$url);
-$url =  str_replace('http://','',$url);
-$url =  str_replace($url,'http://'.$url ,$url);
+$url =  str_replace('https://','',$url);
+$url =  str_replace($url,'https://'.$url ,$url);
 $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -40,17 +40,12 @@ $title = trim($title[0]);
 
 
 $lay = curl_exec($curl);
-
-
-$lay = explode("<div itemprop='articleBody'>",$lay);
-$lay = explode("<i class='fa fa-tag fa-lg'></i>",$lay[1]);
-
-
+$lay = explode('"720","videoUrl":"',$lay);
+$lay = explode('"},{"defaultQuality":true,"format":"mp4","quality":"480","videoUrl":"',$lay[1]);
 $lay = trim($lay[0]);
-$lay = strip_tags($lay,'<img><iframe>');
+$lay = strip_tags($lay);
 $thum = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>$2</option>",$lay);
-	$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"[img]$2[/img]
-	",$lay);
+$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"[img]$2[/img]",$lay);
 $lay =  str_ireplace('GaiXinhXinh.Com','Top18.ViWap.Com' ,$lay);
 $lay = strip_tags($lay,'<img>,<br>');
 $lay = trim($lay);
@@ -88,8 +83,6 @@ echo '
      <button type="submit" class="btn btn-primary btn-block"id="eow">Đăng bài</button></div>
     </form>  
    
-
-<script language="javascript"> document.getElementById("eow").click(); </script>
 </div> '; 
 
 }
