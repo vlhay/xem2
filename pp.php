@@ -1,9 +1,5 @@
 
 <?php
-$urll = $_SERVER["HTTP_REFERER"];
-$urll =  str_replace('?url=','@url=',$urll);
-$urll =  str_replace('?','ooooo',$urll);
-$urll =  str_replace('@url=','?url=',$urll);
 $url = $_GET['url'];
 $url =  str_replace('ooooo','?',$url);
 
