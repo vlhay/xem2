@@ -15,7 +15,7 @@
 <?php
 	    
 	    
-if (!isset($_GET['url']))
+if (!isset($_POST['url']))
 {
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="post">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
 }
