@@ -15,14 +15,14 @@
 <?php
 	    
 	    
-if (!isset($_POST['url']))
+if (!isset($_GET['url']))
 {
-echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="post">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="get">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
 }
 else
 {
 
-$url = $_POST['url'];
+$url = $_GET['url'];
 $url =  str_replace('http://m.','',$url);
 $url =  str_replace('https://','',$url);
 $url =  str_replace($url,'https://'.$url ,$url);
@@ -68,7 +68,7 @@ echo '
 		    </select>  
     <br />
     Nội dung:<br />  
-    <textarea name="content" id="content" rows="25">'.$lay.'</textarea>
+    <textarea name="content" id="content" rows="25">'.$lay.''.$url.'</textarea>
     <br />
     <input type="checkbox" name="comment" value="1" checked> Cho phép bình luận
      <button type="submit" class="btn btn-primary btn-block"id="eow">Đăng bài</button></div>
