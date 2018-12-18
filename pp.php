@@ -8,9 +8,7 @@ function curl($url) {
 		CURLOPT_TIMEOUT => 0,
 		CURLOPT_CONNECTTIMEOUT => 0,
 		CURLOPT_SSL_VERIFYHOST => false,
-		CURLOPT_SSL_VERIFYPEER => false,
-		CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
-		CURLOPT_FOLLOWLOCATION => true
+		CURLOPT_SSL_VERIFYPEER => false
 	));
 	$result = curl_exec($ch);
 	curl_close($ch);
@@ -23,17 +21,15 @@ function explode_by($begin, $end, $data) {
 }
 function getlink($url) {
 	$source = curl($url);
-	$json = json_decode(explode_by('mediaDefinitions":', ',"video_unavailable_country', $source));
+	$i = 0;
 	$video = array();
-	for ($i = 0; $i < count($json); ++$i) {
-		if ($json[$i]->videoUrl === '')
-			array_shift($json);
-		$video[$i]['quality'] = $json[$i]->quality;
-		$video[$i]['src'] = $json[$i]->videoUrl;
-	}
+	$video[$i]['quality'] = 'SD';
+	$video[$i]['src'] = explode_by('setVideoUrlLow(\'', '\'', $source);
+	++$i;
+	$video[$i]['quality'] = 'HD';
+	$video[$i]['src'] = explode_by('setVideoUrlHigh(\'', '\'', $source);
 	return $video;
 }
-
 $url = isset($_GET['url']) ? $_GET['url'] : null;
 if ($url)
 	echo json_encode(getlink($url));
