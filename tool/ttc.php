@@ -68,7 +68,6 @@ $bai =  str_replace('</div>
 $bai = strip_tags($bai,'<p>,<br>,<b>,<i>,<u>,<strong>');
 $bai =  str_replace('
 ','' ,$bai);
-$bai =  str_replace('(adsbygoogle = window.adsbygoogle || []).push({});','' ,$bai);
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
 $bai = preg_replace('#<(.*?)>#is',"[$1]",$bai);
 //$bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'thichtruyentranh.viwap.com', $bai);
@@ -83,7 +82,6 @@ curl_setopt($ch, CURLOPT_URL, 'http://thichtruyentranh.viwap.com/chap');
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 $result = curl_exec($ch);
 curl_close($ch);
 echo 'xong';
@@ -91,8 +89,6 @@ echo 'xong';
 }
 curl_close($bv);
 
-$t= strip_tags($bai,'');
-$f= substr( $t, 0, 500);
 
 }
 
