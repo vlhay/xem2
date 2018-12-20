@@ -85,7 +85,10 @@ echo 'xong';
 
 }
 
-
+echo ' <br> leech tiếp <br>
+<form method="get" action="http://xemlasuong.herokuapp.com/tool/thichtruyen.php">
+Url: <input name="url" type="text"><br>
+<input type="submit" value="Leech" ></form>';
 
 }
 
