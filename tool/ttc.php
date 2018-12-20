@@ -64,7 +64,7 @@ $bai =  str_replace('</div>
         <br><br>','' ,$bai);
  $bai =  str_replace('<script>','<script' ,$bai);
   $bai =  str_replace('<script type="text/javascript">','<script type="text/javascript"' ,$bai);
- $bai =  str_replace('</script>','/script>' ,$bai);
+ $bai =  str_replace('</script>',' script>' ,$bai);
 $bai = strip_tags($bai,'<p>,<br>,<b>,<i>,<u>,<strong>');
 $bai =  str_replace('
 ','' ,$bai);
