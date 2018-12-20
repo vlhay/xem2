@@ -37,7 +37,7 @@ $vll =  str_replace('.html','',$vll);
 
 
 
-$sotrang = $url = $_GET['sotrang'];
+$sotrang = $_GET['sotrang'];
 $idt = $_GET['idt'];
 
 
