@@ -81,7 +81,7 @@ echo '
     <br />
     Thumbnail<br />  
      <input name="thumb" value="'.$dow.'"/>
-              		
+     <input type="hidden" name="trang" value="'.$url.'"/>        		
     <br />
     Nội dung:<br />  
     <textarea name="content" id="content" rows="25">'.$nd.'</textarea>
