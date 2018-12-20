@@ -75,7 +75,7 @@ $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
 echo ' Chap '.$i.'';
 $post = array(
     'idt' => $idt,
-     'content' => $bai,
+     'content' => ' Chap '.$i.'okgkgkgkgkgkgkgkgkgkgk '.$bai.'',
   );
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'http://thichtruyentranh.viwap.com/chap');
