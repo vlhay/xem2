@@ -69,7 +69,7 @@ echo '
 <h3>Viết bài</h3>
 <div class="box">
   
-        <form action="http://thichtruyentranh.viwap.com/manager/post" method="post">
+        <form action="http://thichtruyentranh.viwap.com/asdfdhfgjgjl" method="post">
     Tiêu đề:<br />  	
     <input name="ten" value="'.$title.'"><br />
     Thể loại:<br />  
