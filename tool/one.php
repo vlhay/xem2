@@ -87,8 +87,9 @@ echo '
               		
     <br />
     Nội dung:<br />  
-    <textarea name="content" id="content" rows="25">  <textarea name="content" id="content" rows="25">';
-    curl_setopt ($bv, CURLOPT_URL, 'https://hentai24h.org/'.$vll.'/one-shot.html');
+    <textarea name="content" id="content" rows="25"> ';
+$bv = curl_init();
+curl_setopt ($bv, CURLOPT_URL, 'https://hentai24h.org/'.$vll.'/one-shot.html');
 curl_setopt ($bv, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($bv, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
 $bai = curl_exec($bv);
