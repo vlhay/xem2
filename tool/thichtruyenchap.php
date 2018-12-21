@@ -50,7 +50,7 @@ $key = trim($key[0]);
 $key = strip_tags($key,'<ul>,<a>,<li>');
 preg_match_all('/\<a href=\"(.+?)\"\>/is', $key, $chuong);
 curl_close($curl);
-
+	
 $cuoi = '<!--Quảng Cáo Mobile-->';
 $bv = curl_init();
 for ($i= 1; $i <= $lay ; $i++) { 
@@ -71,7 +71,6 @@ $bai = str_replace('
 ',$bai);
 //$bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'thichtruyentranh.viwap.com', $bai);
 $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
-curl_close($bv);
 echo ' Chap '.$i.'';
 $post = array(
 'idt' => $idt,
@@ -85,7 +84,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $result = curl_exec($ch);
 curl_close($ch);
 echo 'xong';
-
+curl_close($bv);
 }
 
 echo ' <br> leech tiếp <br>
