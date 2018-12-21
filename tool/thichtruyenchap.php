@@ -71,7 +71,7 @@ $bai = str_replace('
 ',$bai);
 //$bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'thichtruyentranh.viwap.com', $bai);
 $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
-echo ' Chap '.$i.'  '.$chuong[0].''.$chuong[1].' ';
+echo ' Chap '.$i.'  http://thichtruyen.vn.'.$chuong[1][($i-1)]' ';
 $post = array(
 'idt' => $idt,
 'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
