@@ -77,7 +77,7 @@ $post = array(
 'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
   );
 
-echo $post ;
+echo $post[1] ;
 curl_close($bv);
 }
 
