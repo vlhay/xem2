@@ -63,7 +63,7 @@ $bai = curl_exec($bv);
 $bai = explode('<!--Quảng Cáo PC-->',$bai);
 $bai = explode($cuoi,$bai[1]);
 $bai = trim($bai[0]);
-$bai =  str_replace('<script>','<script' ,$bai);
+$bai = preg_replace('#<script(.*?)>(.*?)</script>#is',"<div $1 id='$2' >",$bai);
 $bai =  str_replace('<script type="text/javascript">','<script type="text/javascript"' ,$bai);
 $bai = strip_tags($bai,'<p>,<br>,<b>,<i>,<u>,<strong>');
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
