@@ -65,6 +65,10 @@ $bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
 $bai = strip_tags($bai,'<p>,<br>,<b>,<i>,<u>,<strong>');
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
 $bai = preg_replace('#<(.*?)>#is',"[$1]",$bai);
+$bai = str_replace('
+
+','
+',$bai);
 //$bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'thichtruyentranh.viwap.com', $bai);
 $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
 curl_close($bv);
@@ -75,7 +79,7 @@ $post = array(
   );
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'http://thichtruyen.viwap.com/chap');
-curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POST, count($post));
 curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $result = curl_exec($ch);
