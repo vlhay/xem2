@@ -76,16 +76,8 @@ $post = array(
 'idt' => $idt,
 'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
   );
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://thichtruyen.viwap.com/chap');
-curl_setopt($ch, CURLOPT_POST, count($post));
-curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
 
-$result = curl_exec($ch);
-curl_close($ch);
-echo 'xong';
+echo $post ;
 curl_close($bv);
 }
 
