@@ -84,7 +84,7 @@ $post = array(
 'idt' => $idt,
 'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
   );
-	
+curl_close($bv);
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'http://thichtruyen.viwap.com/chap');
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -96,7 +96,7 @@ curl_close($ch);
 echo ' xong';
 	
 }
-curl_close($bv);
+
 
 	
 //$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
