@@ -84,7 +84,7 @@ echo '
      <input type="hidden" name="trang" value="'.$url.'"/>        		
     <br />
     Nội dung:<br />  
-   <textarea>  '.$nd.'
+  <textarea name="content" id="content" rows="35">  '.$nd.'
     </textarea>
         <br />
     <input type="checkbox" name="comment" value="1" checked> Cho phép bình luận
