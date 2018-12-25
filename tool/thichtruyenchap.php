@@ -75,17 +75,28 @@ $bai = preg_replace('#<(.*?)>#is',"[$1]",$bai);
 
 $bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'BaBaBa.Mobie.In', $bai);
 $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
-echo '  [b]Chương '.$i.' [/b]  '.$bai.'';
+echo ' Chương '.$i.'';
+$post = array(
+'idt' => $idt,
+'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
+  );
+	
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'http://thichtruyen.viwap.com/chap');
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt ($ch, CURLOPT_POSTFIELDS, count($post));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+$result = curl_exec($ch);
+curl_close($ch);
+echo ' xong';
+	
 }
 curl_close($bv);
 
 	
 //$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
 
-$post = array(
-'idt' => $idt,
-'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
-  );
 
 echo ' <br> leech tiếp <br>
 <form method="get" action="http://xemlasuong.herokuapp.com/tool/thichtruyen.php">
