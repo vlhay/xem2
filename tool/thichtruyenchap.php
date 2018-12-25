@@ -53,9 +53,8 @@ curl_close($curl);
 	
 
 $cuoi = '<!--Quảng Cáo Mobile-->';
-
-for ($i= 1; $i <= $lay ; $i++) {
 $bv = curl_init();
+for ($i= 1; $i <= $lay ; $i++) {
 curl_setopt ($bv, CURLOPT_URL, 'http://thichtruyen.vn.'.$chuong[1][($i-1)]);
 curl_setopt ($bv, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($bv, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
@@ -63,17 +62,7 @@ $bai = curl_exec($bv);
 $bai = explode('<!--Quảng Cáo PC-->',$bai);
 $bai = explode($cuoi,$bai[1]);
 $bai = trim($bai[0]);
-	
-
-$bai =  str_replace('<script type=\"text/javascript\">
-  (sc_adv_out = window.sc_adv_out \|\| \[\]\).push\(\{
-    id \: \"474330\"\,
-    domain \: \"n.ads3-adnow.com\"
-  \}\)\;
-<\/script>','' ,$bai);	
-$bai =  str_replace('<script type="text/javascript" src="//st-n.ads3-adnow.com/js/a.js"></script>','' ,$bai);
-$bai =  str_replace('<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>','' ,$bai);
-$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
+$bai = preg_replace('#<script type="text/javascript">(.*?)</script>#is',"<div>",$bai);
 $bai =  str_replace('</div>
         <br><br>','' ,$bai);
 $bai =  str_replace('
@@ -88,11 +77,18 @@ $bai = preg_replace('#<(.*?)>#is',"[$1]",$bai);
 
 $bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'BaBaBa.Mobie.In', $bai);
 $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
+curl_close($bv);
+
+$longg[$i] = $bai;	
+	
+}
+	
+for ($i= 1; $i <= $lay ; $i++) {	
 echo ' Chương '.$i.'';
 
 $post = array(
 'idt' => $idt,
-'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
+'content' => ' [b]Chương '.$i.'[/b][br] '.$long[$i].'',
   );
 
 $ch = curl_init();
@@ -103,10 +99,8 @@ curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 $result = curl_exec($ch);
 curl_close($ch);
 echo ' xong';
-curl_close($bv);
+
 }
-
-
 	
 //$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
 
