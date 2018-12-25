@@ -87,8 +87,8 @@ $post = array(
 curl_close($bv);
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'http://thichtruyen.viwap.com/chap');
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt ($ch, CURLOPT_POSTFIELDS, count($post));
+curl_setopt($ch, CURLOPT_POST, count($post));
+curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 $result = curl_exec($ch);
