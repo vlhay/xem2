@@ -84,28 +84,7 @@ echo '
      <input type="hidden" name="trang" value="'.$url.'"/>        		
     <br />
     Nội dung:<br />  
-    '.$nd.'';
-$cuoi = '<!--Quảng Cáo Mobile-->';
-$bv = curl_init();
-for ($i= 1; $i <= $lay ; $i++) { 
-curl_setopt ($bv, CURLOPT_URL, 'http://thichtruyen.vn.'.$chuong[1][($i-1)]);
-curl_setopt ($bv, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($bv, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
-$bai = curl_exec($bv);
-$bai = explode('<!--Quảng Cáo PC-->',$bai);
-$bai = explode($cuoi,$bai[1]);
-$bai = trim($bai[0]);
-$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
-$bai = strip_tags($bai,'<p>,<br>,<b>,<i>,<u>,<strong>');
-$bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
-$bai = preg_replace('#<(.*?)>#is',"[$1]",$bai);
-$bai = str_replace('
-
-','
-',$bai);
-//$bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'thichtruyentranh.viwap.com', $bai);
-$bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
-echo ' Chap '.$i.' <textarea> '.$lay.'</textarea> 
+   <textarea>  '.$nd.'
     
     
     </textarea>
