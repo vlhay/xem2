@@ -70,10 +70,8 @@ $bai =  str_replace('
 
 ','' ,$bai);
 $bai = strip_tags($bai,'<p>,<br>,<b>,<i>,<u>,<strong>');
-$bai =  str_replace('        
-        
-        
-        ','' ,$bai);
+$bai =  str_replace('
+','' ,$bai);
 $bai =  str_replace('(adsbygoogle = window.adsbygoogle || []).push({});','' ,$bai);
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
 $bai = preg_replace('#<(.*?)>#is',"[$1]",$bai);
@@ -81,16 +79,16 @@ $bai = preg_replace('#<(.*?)>#is',"[$1]",$bai);
 $bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'BaBaBa.Mobie.In', $bai);
 $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
 echo ' Chương '.$i.'';
+curl_close($bv);
 $post = array(
 'idt' => $idt,
 'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
   );
-curl_close($bv);
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'http://thichtruyen.viwap.com/chap');
-curl_setopt($ch, CURLOPT_POST, count($post));
+curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 $result = curl_exec($ch);
 curl_close($ch);
