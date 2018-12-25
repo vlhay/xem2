@@ -78,7 +78,7 @@ $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
 echo '  [b]Chương '.$i.' [/b]  '.$bai.'';
 }
 curl_close($bv);
-}
+
 	
 //$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
 
