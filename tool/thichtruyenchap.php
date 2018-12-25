@@ -62,8 +62,12 @@ $bai = curl_exec($bv);
 $bai = explode('<!--Quảng Cáo PC-->',$bai);
 $bai = explode($cuoi,$bai[1]);
 $bai = trim($bai[0]);
+$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
 $bai =  str_replace('</div>
         <br><br>','' ,$bai);
+$bai =  str_replace('
+
+','' ,$bai);
 $bai = strip_tags($bai,'<p>,<br>,<b>,<i>,<u>,<strong>');
 $bai =  str_replace('        
         
