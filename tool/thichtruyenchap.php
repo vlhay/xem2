@@ -51,6 +51,7 @@ $key = strip_tags($key,'<ul>,<a>,<li>');
 preg_match_all('/\<a href=\"(.+?)\"\>/is', $key, $chuong);
 curl_close($curl);
 	
+
 $cuoi = '<!--Quảng Cáo Mobile-->';
 $bv = curl_init();
 for ($i= 1; $i <= $lay ; $i++) { 
@@ -61,25 +62,30 @@ $bai = curl_exec($bv);
 $bai = explode('<!--Quảng Cáo PC-->',$bai);
 $bai = explode($cuoi,$bai[1]);
 $bai = trim($bai[0]);
-$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
+$bai =  str_replace('</div>
+        <br><br>','' ,$bai);
 $bai = strip_tags($bai,'<p>,<br>,<b>,<i>,<u>,<strong>');
+$bai =  str_replace('        
+        
+        
+        ','' ,$bai);
+$bai =  str_replace('(adsbygoogle = window.adsbygoogle || []).push({});','' ,$bai);
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
 $bai = preg_replace('#<(.*?)>#is',"[$1]",$bai);
-$bai = str_replace('
 
-','
-',$bai);
-//$bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'thichtruyentranh.viwap.com', $bai);
+$bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'BaBaBa.Mobie.In', $bai);
 $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
-echo ' Chap '.$i.'  http://thichtruyen.vn.'.$chuong[1][($i-1)].' ';
+echo '  [b]Chương '.$i.' [/b]  '.$bai.'';
+}
+curl_close($bv);
+}
+	
+//$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
+
 $post = array(
 'idt' => $idt,
 'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
   );
-
-echo $bai ;
-curl_close($bv);
-}
 
 echo ' <br> leech tiếp <br>
 <form method="get" action="http://xemlasuong.herokuapp.com/tool/thichtruyen.php">
