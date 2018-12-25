@@ -85,8 +85,6 @@ echo '
     <br />
     Nội dung:<br />  
    <textarea>  '.$nd.'
-    
-    
     </textarea>
         <br />
     <input type="checkbox" name="comment" value="1" checked> Cho phép bình luận
