@@ -79,16 +79,11 @@ $bai = preg_replace('/(thíchtruyện.vn|www.thichtruyen.vn|thichtruyen)/i', 'Ba
 $bai = preg_replace('/(Thích Truyện.VN)/i', 'Beautiful MyGirl', $bai);
 curl_close($bv);
 
-$longg[$i] = $bai;	
-	
-}
-	
-for ($i= 1; $i <= $lay ; $i++) {	
 echo ' Chương '.$i.'';
 
 $post = array(
 'idt' => $idt,
-'content' => ' [b]Chương '.$i.'[/b][br] '.$long[$i].'',
+'content' => ' [b]Chương '.$i.'[/b][br] '.$bai.'',
   );
 
 $ch = curl_init();
@@ -99,8 +94,11 @@ curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 $result = curl_exec($ch);
 curl_close($ch);
 echo ' xong';
-
+	
+	
 }
+	
+
 	
 //$bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
 
