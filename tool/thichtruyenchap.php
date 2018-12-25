@@ -63,6 +63,16 @@ $bai = curl_exec($bv);
 $bai = explode('<!--Quảng Cáo PC-->',$bai);
 $bai = explode($cuoi,$bai[1]);
 $bai = trim($bai[0]);
+	
+
+$bai =  str_replace('<script type=\"text/javascript\">
+  (sc_adv_out = window.sc_adv_out \|\| \[\]\).push\(\{
+    id \: \"474330\"\,
+    domain \: \"n.ads3-adnow.com\"
+  \}\)\;
+<\/script>','' ,$bai);	
+$bai =  str_replace('<script type="text/javascript" src="//st-n.ads3-adnow.com/js/a.js"></script>','' ,$bai);
+$bai =  str_replace('<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>','' ,$bai);
 $bai = preg_replace('#<script(.*?)/script>#is',"<div>",$bai);
 $bai =  str_replace('</div>
         <br><br>','' ,$bai);
@@ -72,7 +82,7 @@ $bai =  str_replace('
 $bai = strip_tags($bai,'<p>,<br>,<b>,<i>,<u>,<strong>');
 $bai =  str_replace('
 ','' ,$bai);
-$bai =  str_replace('(adsbygoogle = window.adsbygoogle || []).push({});','' ,$bai);
+$bai =  str_replace('<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>','' ,$bai);
 $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>', $bai);
 $bai = preg_replace('#<(.*?)>#is',"[$1]",$bai);
 
