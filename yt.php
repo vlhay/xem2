@@ -98,10 +98,12 @@ foreach ($streams as $streamdata) {
     }
     if ($quality == "720p" or $quality == "480p" or  $quality == "360p"){
          echo "<a href ='".$link."' target = '_blank'>".$quality."</a> &ensp;";
+        $uff= $uff.$quality."?=".$link;
     }
 
 }
 echo "<br>";
+    echo $uff;
 }
 /*GET Link from Youtube*/
 ?>
