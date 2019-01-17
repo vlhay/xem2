@@ -29,12 +29,11 @@ curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_USERAGENT, $td);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 $lay = curl_exec($curl);
-$subject = $lay ;
-preg_match_all('/\{\"defaultQuality\"\:false\,\"format\"\:\"mp4\"\,\"quality\"\:\"720\",\"videoUrl\"\:\"(.+?)\"\}\,/is ', $subject, $matches);
-echo '<pre>';
-print_r($matches[0][1]);
-echo '</pre>';
+$lay = explode('\"720\"\,\"videoUrl\"\:\"',$lay);
+$lay = explode('\"\}\,\{\"defaultQuality\',$lay[1]);
+$lay = trim($lay[0]);
 curl_close($curl);
+echo $lay;
    
 }
     
