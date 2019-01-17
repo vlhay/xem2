@@ -23,7 +23,7 @@ preg_match_all('/\{\"defaultQuality\"\:false\,\"format\"\:\"mp4\"\,\"quality\"\:
 echo '<pre>';
 print_r($matches[0][1]);
 echo '</pre>';
-
+curl_close($curl);
    
     
     
