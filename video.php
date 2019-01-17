@@ -27,6 +27,7 @@ $lay = explode('720","videoUrl":"',$lay);
 $lay = explode('"},{"defaultQuality',$lay[1]);
 $lay = $lay[0];
 $lay =  str_replace('\\','' ,$lay);
+	$lay =  str_replace('&','@' ,$lay);
 curl_close($curl);
 header('Location: '.$_SERVER["HTTP_REFERER"].'?url='.$lay.'');
    
