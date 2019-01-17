@@ -1,11 +1,5 @@
 <?php
 session_start();
-$title = 'Xem Mã Nguồn Wap/Web';
-echo '<div class="item"><form method="get"><p>Url: <input name="url" type="text" value="'.$_GET['url'].'"></p><p>
-<input type="radio" name="td" value="web" checked="checked"/>Xem mã nguồn ở chế độ Web</p><p>
-<input type="radio" name="td" value="android" />Xem mã nguồn bằng Smartphone Android</p><p>
-<input type="radio" name="td" value="java" />Xem mã nguồn bằng điện thoại Java</p><p>
-<input type="submit" value="Xem" ></p></form></div>';
 if (isset($_GET['url']))
 
 {
@@ -34,18 +28,10 @@ $lay = explode('"},{"defaultQuality',$lay[1]);
 $lay = $lay[0];
 $lay =  str_replace('\\','' ,$lay);
 curl_close($curl);
-echo $lay;
+header('Location: '.$_SERVER["HTTP_REFERER"].'?url='.$lay.'');
    
 }
     
 ?>
 
 
-<video id="my-video" class="video-js" controls preload="auto" style="max-width:100%; height:auto"
-poster="<?php
-echo ($urlJPG);
-?>" data-setup="{}">
-<source src="<?php
-echo json_decode(getXvideo($url))->mp4high;
-?>" type='video/mp4'>
-</video> 
