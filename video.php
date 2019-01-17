@@ -30,7 +30,7 @@ curl_setopt($curl, CURLOPT_USERAGENT, $td);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 $lay = curl_exec($curl);
 $lay = explode('\"720\"\,\"videoUrl\"\:\"',$lay);
-$lay = explode('\"\}\,\{\"defaultQuality\',$lay[1]);
+$lay = explode('\"\}\,\{\"defaultQuality',$lay[1]);
 $lay = trim($lay[0]);
 curl_close($curl);
 echo $lay;
