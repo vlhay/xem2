@@ -1,61 +1,32 @@
 <?php
-set_time_limit(0);
-error_reporting(0);
-function fetch_value($str, $find_start = '', $find_end = '')
+session_start();
+$title = 'Xem Mã Nguồn Wap/Web';
+echo '<div class="header">'.$title.'</div>';
+echo '<div class="item"><form method="get"><p>Url: <input name="url" type="text" value="'.$_GET['url'].'"></p><p>
+<input type="radio" name="td" value="web" checked="checked"/>Xem mã nguồn ở chế độ Web</p><p>
+<input type="radio" name="td" value="android" />Xem mã nguồn bằng Smartphone Android</p><p>
+<input type="radio" name="td" value="java" />Xem mã nguồn bằng điện thoại Java</p><p>
+<input type="submit" value="Xem" ></p></form></div>';
+if (isset($_GET['url']))
+
 {
-    if ($find_start == '') {
-        return '';
-    }
-    $start = strpos($str, $find_start);
-    if ($start === false) {
-        return '';
-    }
-    $length = strlen($find_start);
-    $substr = substr($str, $start + $length);
-    if ($find_end == '') {
-        return $substr;
-    }
-    $end = strpos($substr, $find_end);
-    if ($end === false) {
-        return $substr;
-    }
-    return substr($substr, 0, $end);
-}
-function getXvideo($url)
-{
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Linux; Android 4.4.2; en-us; SAMSUNG SM-G900T Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.6 Chrome/28.0.1500.94 Mobile Safari/537.36");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    $xx = curl_exec($ch);
-    curl_close($ch);
-    unset($ch);
 
+$url = $_GET['url'];
+$url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
+$curl = curl_init();
+curl_setopt ($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_USERAGENT, $td);
+curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+$lay = curl_exec($curl);
+$subject = $lay ;
+preg_match_all('/\{\"defaultQuality\"\:false\,\"format\"\:\"mp4\"\,\"quality\"\:\"720\",\"videoUrl\"\:\"(.+?)\"\}\,/is ', $subject, $matches);
+echo '<pre>';
+print_r($matches[0][1]);
+echo '</pre>';
 
-
-    if (fetch_value($xx, "html5player.setVideoUrlHigh('", "');") != "") {
-        $result['error']   = 0;
-        $result['mp4low']  = fetch_value($xx, "html5player.setVideoUrlLow('", "');");
-        $result['mp4high'] = fetch_value($xx, "html5player.setVideoUrlHigh('", "');");
-        $result['image']   = fetch_value($xx, "html5player.setThumbUrl('", "');");
-        $result['title']   = fetch_value($xx, "html5player.setVideoTitle('", "');");
-    } else {
-        $result['error'] = 2;
-        $result['msg']   = 'Có lỗi xảy ra !! Thử lại sau nhé !';
-    }
-    return json_encode($result);
-}
-if (isset($_GET['url']) && strstr($_GET['url'], 'xvideos.com') != null) {
-    $url = $_GET['url'];
-    //echo getXvideo($url);
-    //<link href="http://vjs.zencdn.net/5.11.9/video-js.css" rel="stylesheet">
-//<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-//<script src="http://vjs.zencdn.net/5.11.9/video.js"></script>
-
-}
+   
+    
+    
 ?>
 
 
