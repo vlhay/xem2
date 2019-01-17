@@ -1,7 +1,6 @@
 <?php
 session_start();
 $title = 'Xem Mã Nguồn Wap/Web';
-echo '<div class="header">'.$title.'</div>';
 echo '<div class="item"><form method="get"><p>Url: <input name="url" type="text" value="'.$_GET['url'].'"></p><p>
 <input type="radio" name="td" value="web" checked="checked"/>Xem mã nguồn ở chế độ Web</p><p>
 <input type="radio" name="td" value="android" />Xem mã nguồn bằng Smartphone Android</p><p>
@@ -10,6 +9,18 @@ echo '<div class="item"><form method="get"><p>Url: <input name="url" type="text"
 if (isset($_GET['url']))
 
 {
+	if($_GET[td] == 'android')
+	{
+	$td = 'Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 4 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19';
+	}
+	elseif($_GET[td] == 'java')
+	{
+	$td = 'NokiaN97/21.1.107 (SymbianOS/9.4; Series60/5.0 Mozilla/5.0; Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebkit/525 (KHTML, like Gecko) BrowserNG/7.1.4';
+	}
+	else
+	{
+	$td = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/45.0 Chrome/39.0.2171.95 Safari/537.36';
+	}
 
 $url = $_GET['url'];
 $url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
@@ -25,7 +36,7 @@ print_r($matches[0][1]);
 echo '</pre>';
 curl_close($curl);
    
-    
+}
     
 ?>
 
