@@ -32,6 +32,7 @@ $lay = curl_exec($curl);
 $lay = explode('720","videoUrl":"',$lay);
 $lay = explode('"},{"defaultQuality',$lay[1]);
 $lay = $lay[0];
+$lay =  str_replace('\\','' ,$lay);
 curl_close($curl);
 echo $lay;
    
