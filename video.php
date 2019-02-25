@@ -15,7 +15,7 @@ if (isset($_GET['url']))
 	{
 	$td = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/45.0 Chrome/39.0.2171.95 Safari/537.36';
 	}
-
+$link = 'http://xemlasuong.viwap.com/view/'.$_GET['url'];
 $url = $_GET['url'];
 $url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
 $curl = curl_init();
@@ -29,8 +29,8 @@ $lay = $lay[0];
 $lay =  str_replace('\\','' ,$lay);
 	$lay =  str_replace('&','@' ,$lay);
 curl_close($curl);
-header('Location: '.$_SERVER["HTTP_REFERER"].'?url='.$lay.'');
-   
+//header('Location: '.$_SERVER["HTTP_REFERER"].'?url='.$lay.'');
+header('Location: '.$link.'?url='.$lay.'');   
 }
     
 ?>
