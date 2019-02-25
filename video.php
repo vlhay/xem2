@@ -16,6 +16,7 @@ if (isset($_GET['url']))
 	$td = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/45.0 Chrome/39.0.2171.95 Safari/537.36';
 	}
 $link = 'http://xemlasuong.viwap.com/view/'.$_GET['link'];
+$cl = $_GET['chatluong'];
 $url = $_GET['url'];
 $url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
 $curl = curl_init();
@@ -23,8 +24,15 @@ curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_USERAGENT, $td);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 $lay = curl_exec($curl);
+if ($cl == '720P' ){ 		
 $lay = explode('720","videoUrl":"',$lay);
-$lay = explode('"},{"defaultQuality',$lay[1]);
+$lay = explode('"},{"defaultQuality',$lay[1]);}
+elseif ($cl = '480P'){
+$lay = explode('720","videoUrl":"',$lay);
+$lay = explode('"},{"defaultQuality',$lay[1]);}
+elseif ($cl = '240P'){
+$lay = explode('720","videoUrl":"',$lay);
+$lay = explode('\"}],\"video_unavailable_country',$lay[1]);}
 $lay = $lay[0];
 $lay =  str_replace('\\','' ,$lay);
 	$lay =  str_replace('&','@' ,$lay);
