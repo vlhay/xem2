@@ -27,10 +27,10 @@ $lay = curl_exec($curl);
 if ($cl == '720P' ){ 		
 $lay = explode('720","videoUrl":"',$lay);
 $lay = explode('"},{"defaultQuality',$lay[1]);}
-elseif ($cl = '480P'){
+elseif ($cl == '480P'){
 $lay = explode('720","videoUrl":"',$lay);
 $lay = explode('"},{"defaultQuality',$lay[1]);}
-elseif ($cl = '240P'){
+elseif ($cl == '240P'){
 $lay = explode('720","videoUrl":"',$lay);
 $lay = explode('\"}],\"video_unavailable_country',$lay[1]);}
 $lay = $lay[0];
