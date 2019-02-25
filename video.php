@@ -28,10 +28,10 @@ if ($cl == '720P' ){
 $lay = explode('720","videoUrl":"',$lay);
 $lay = explode('"},{"defaultQuality',$lay[1]);}
 elseif ($cl == '480P'){
-$lay = explode('720","videoUrl":"',$lay);
+$lay = explode('480","videoUrl":"',$lay);
 $lay = explode('"},{"defaultQuality',$lay[1]);}
 elseif ($cl == '240P'){
-$lay = explode('720","videoUrl":"',$lay);
+$lay = explode('240","videoUrl":"',$lay);
 $lay = explode('\"}],\"video_unavailable_country',$lay[1]);}
 $lay = $lay[0];
 $lay =  str_replace('\\','' ,$lay);
