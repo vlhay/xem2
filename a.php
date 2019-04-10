@@ -81,7 +81,7 @@ echo '
 		    </select>  
     <br />
     Nội dung:<br />  
-    <textarea name="content" id="content" rows="25">;
+    <textarea name="content" id="content" rows="25">';
     $bv = curl_init(); 
 curl_setopt ($bv, CURLOPT_URL, 'https://hentaivn.net'.$link);
 curl_setopt ($bv, CURLOPT_RETURNTRANSFER, 1);
