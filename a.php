@@ -64,7 +64,7 @@ echo '
   
         <form action="http://truyenhentai.viwap.com/namon" method="post">
     Tiêu đề:<br />  	
-    md_keys_google($value)
+    
     <input name="ten" value="'.$title.'"><br />
 
     <select name="category">  
@@ -94,6 +94,7 @@ $bai = preg_replace('/<p>(Chap|Chương|Phần)(.*)<\/p>/i', '<p><b>$1$2</b></p>
 curl_close($bv);
 echo $bai.' </textarea>
     <br />
+      Từ Khóa:<br />  '.$link.'
   <div class="listm">tag <input type="text" name="tag" value="'.$title.','.$key.'18+, truyen he ntai, truyen loan luan, truyen nguoi lon, hentai dam, hentai tai mau, full color, anime sex" ></div>
 <div class="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
   <div class="list"><input type="checkbox" name="comment" value="0" > Cho phép Phân Trang</div>
