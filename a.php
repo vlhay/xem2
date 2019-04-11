@@ -62,7 +62,7 @@ echo '
 <h3>Viết bài</h3>
 <div class="box">
   
-        <form action="http:/truyenhentai.viwap.com/namon" method="post">
+        <form action="http://truyenhentai.viwap.com/namon" method="post">
     Tiêu đề:<br />  	
     md_keys_google($value)
     <input name="ten" value="'.$title.'"><br />
@@ -74,11 +74,8 @@ echo '
 		    </select>  
     <br />
     Thumbnail<br />  
-     <select name="thumb">  
-		   <optgroup>	
-	'.$thumb.'
-              		 </optgroup>			
-		    </select>  
+     <input name="thumb" rows="25" value="'.$thumb.'">		
+		   
     <br />
     Nội dung:<br />  
     <textarea name="content" id="content" rows="25">';
