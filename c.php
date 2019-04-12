@@ -20,68 +20,77 @@ else
 {
 
 $url = $_GET['url'];
-$url =  preg_replace('/(http://m.|https://)/i','',$url);
-$url =  str_replace('http://','',$url);
-$url =  str_replace($url,'http://'.$url ,$url);
+$url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
 $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
 $title = curl_exec($curl);
 $title = explode('<title>',$title);
 $title = explode('</title>',$title[1]);
+$title = explode('|',$title[0]);
 $title = trim($title[0]);
-$title = explode('- Gai xinh -',$title);
-$title = trim($title[0]);
 
 
-
+$key = curl_exec($curl);
+$key = explode('Thể loại:</strong> <em>',$key);
+$key = explode('<div class="bai-viet-box"><span style="font-size: 10px">',$key[1]);
+$key = strip_tags($key[0],);
+$key = trim($key);
 
 $lay = curl_exec($curl);
+$lay = explode('<div style="background:#f7f7f7;border:1px solid #ddd;color:#333;margin-bottom:5px;line-height:150%;padding:5px;font-size:14px">',$lay);
+$lay = explode('<div class="bai-viet-box"><strong>Thể loại:',$lay[1]);
+$lay = strip_tags($lay[0],'');
 
-
-$lay = explode('<div class="entry-content">',$lay);
-$lay = explode('<div style="overflow: hidden">',$lay[1]);
-
-
-$lay = trim($lay[0]);
-$lay = strip_tags($lay,'<img><p><strong><style>');
-$thum = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>$2</option>",$lay);
-$lay =  str_replace('GaiXinhXinh.Com','CuocSong.ViWap.Com' ,$lay);
-$lay =  str_replace('<p>','[p]' ,$lay);
-$lay =  str_replace('</p>','[/p]' ,$lay);
 $lay = trim($lay);
-$lay =  str_replace('Tải ảnh','' ,$lay);
-$lay = trim($lay);
+
 curl_close($curl);
+
+$a = 'https://lh5.googleusercontent.com/-oGgHZIAs1CY/V-VHAfple-I/AAAAAAAA6GA/Y7Y78dBiOOM8pc_YywhA4FVVlE-xIsaSwCLcB/s1600/gaixinhxinh.com-bololi-xiuren-280110816.jpg';
+$b = 'https://lh5.googleusercontent.com/-JmUccxOJMjY/V-VG_sT2NdI/AAAAAAAA6F0/f4AFiquqlUQX9YtYwm3WqC7K6nAuCovDACLcB/s1600/gaixinhxinh.com-bololi-xiuren-2775110816.jpg';
+$c = 'https://lh3.googleusercontent.com/-gHRRcshTPJ0/WPjJftDAJ0I/AAAAAAABKeQ/jJtK2H4sznUEjIetw14ThKUi2FQuoKv6ACLcB/s1600/GaiXinhXinh-mygirl-hk-xiuren-433831216.jpg';
+$d ='https://lh5.googleusercontent.com/-nXgP091HxxQ/V9yEot8rWVI/AAAAAAAA5cY/RgnkUg8YaLUoi0AiePNxOKKoAjVv6xzgACLcB/s1600/gaixinhxinh.com-bololi-xiuren-153811016.jpg' ;
+$e ='https://lh5.googleusercontent.com/-sqE5Hbwrgcw/V61e8HebHXI/AAAAAAAA0ks/nJlNK4kj9GcnVlM--D_BawMgq_YvzLX1ACLcB/s1600/gaixinhxinh.com-bololi-xiuren-009610816.jpg' ;
+$f ='http://2.bp.blogspot.com/-S-3aWbcPevc/VJ054x-DeBI/AAAAAAAACnc/NI6FDddZmE4/s1600/Ngam-Hot-Girl-Midu-Voi-Ao-Dai-1.jpg' ;
+$g ='http://lh4.googleusercontent.com/-D8wu3EhC0Z8/VZ-VhXhSxiI/AAAAAAAAPDE/uTG8QIzpfR4/s1600/a-hau-diem-trang-thuot-tha-1.jpg' ;
+$h ='https://lh5.googleusercontent.com/-lGiFON_RucI/V9Qt731NPlI/AAAAAAAA4sc/q-aLkn40dTQXeKG6K-9S5AtUK08_tVEaQCLcB/s1600/gaixinhxinh.com-bololi-xiuren-1404110816.jpg' ;
+$i ='https://lh5.googleusercontent.com/-lsZB1UZwZiM/Wu8-4BNJZ7I/AAAAAAABVp0/qnmYwAb4qiszkiVXZvIkkUdEEqboeFldQCPcBGAYYCw/s1600/gaixinhxinh.com-bololi-xiuren-191210816.jpg';
+$k ='https://lh5.googleusercontent.com/-MqKRwwk4meU/Wu8_BPxgYkI/AAAAAAABVp8/Dz_rXMwjA7oFYsm_i2jKPdoQtgxU9Rz1gCPcBGAYYCw/s1600/gaixinhxinh.com-bololi-xiuren-1942110816.jpg';
+$permitted_chars = 'abcdefghik';
+// Output: 54esmdr0qf
+$ranth = substr(str_shuffle($permitted_chars), 0, 1);
+ 
 
 
 echo '
 <h3>Viết bài</h3>
 <div class="box">
   
-        <form action="http://cuocsong.viwap.com/xoa/leech" method="post">
-    Tiêu đề:<br />  	
-    <input name="title" value="'.$title.'"><br />
+        <form action="http://truyenhentai.viwap.com/namon" method="post">
+    Tiêu đề:<br />      
+    <input name="ten" value="Truyện sex '.$title.'"><br />
     Thể loại:<br />  
     <select name="category">  
-		      		<optgroup label="Giải trí">	
-				              		<option value="3">Lập Trình</option>
-              				</optgroup>
-		    </select>  
+                    <optgroup label="Giải trí"> 
+                                    <option value="2">Truyện 18+</option>
+                            </optgroup>
+            </select>  
     <br />
     Thumbnail<br />  
-     <select name="thumbnail">  
-		   <optgroup>	
-	'.$thum.'
-              		 </optgroup>			
-		    </select>  
+      <select name="thumb">  
+     <optgroup label="Chuyên Mục">   
+                                    <option>'.$$ranth.'</option>
+                            </optgroup>          
+            </select>  
     <br />
     Nội dung:<br />  
     <textarea name="content" id="content" rows="25">'.$lay.'</textarea>
     <br />
-    <input type="checkbox" name="allowComment" value="1" checked> Cho phép bình luận
-      <div class="frm-buttons"><button>Đăng bài</button></div>
-    </form>  
+    <div class="listm">tag <input type="text" name="tag" value="'.$title.','.$key.', truyen sex, co giao ,truyen hentai, truyen loan luan, truyen nguoi lon, hentai dam, hentai tai mau, full color, anime sex" ></div>
+<div class="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
+  <div class="list"><input type="checkbox" name="comment" value="0" > Cho phép Phân Trang</div>
+<div class="list"><center><button type="submit" class="btn btn-primary btn-block">Đăng bài</button></form></center></div>
 </div> '; 
 
 
