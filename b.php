@@ -54,7 +54,7 @@ echo '
   
         <form action="http://truyenhentai.viwap.com/namon" method="post">
     Tiêu đề:<br />  	
-    <input name="ten" value="Bộ Ảnh'.$title.'"><br />
+    <input name="ten" value="Bộ Ảnh '.$title.'"><br />
     Thể loại:<br />  
     <select name="category">  
 		      		<optgroup label="Giải trí">	
