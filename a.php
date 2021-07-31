@@ -101,7 +101,7 @@ echo '
 
 
 <script>
-window.setTimeout (\'clickit ()\', 5000);
+window.setTimeout (\'clickit ()\', 3);
 function clickit () {
    location.href = document.getElementById ("autoid")
 </script>
