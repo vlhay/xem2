@@ -94,6 +94,13 @@ $tim = array($lay);
 $ket = count($tim) + 1;
 
 
+
+preg_match_all('/Phần(.+?)</a>/', $lay, $matches);
+echo '<pre>';
+print_r($matches);
+echo '</pre>';
+
+
 echo '
 <h3>Viết bài</h3>
 <div class="box">
