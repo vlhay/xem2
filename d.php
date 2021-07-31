@@ -62,6 +62,21 @@ $lay = trim($lay);
 
 
 
+$trangdau = curl_exec($curl);
+$trangdau = explode('<div class="ndtruyen">',$trangdau);
+$trangdau = explode('<center><div class="phantrang">',$trangdau[1]);
+
+$trangdau = strip_tags($trangdau[0],'<a>');
+
+$trangdau = preg_replace('/TruyenTv.net|truyentv.net/i', 'TruyenHentai.Viwap.Com', $trangdau);
+$trangdau = str_replace('</p>','[/p]',$trangdau);
+$trangdau = str_replace('<p>','[p]',$trangdau);
+$trangdau = str_replace('</b>','[/b]',$trangdau);
+$trangdau = str_replace('<b>','[b]',$trangdau);
+$trangdau = str_replace('</center>','[/center]',$trangdau);
+$trangdau = str_replace('<center>','[center]',$trangdau);
+
+$trangdau = trim($trangdau);
 
 
 
@@ -120,13 +135,13 @@ echo '
             </select>  
     <br />
     Nội dung:<br />  
-    <textarea name="content" id="content" rows="25">';
+    <textarea name="content" id="content" rows="25"> [p][b]Phần 1[/b][/p][p]'.$trangdau.'[/p] ';
 
 
 
 
 $bv = curl_init();
-for ($i= 1; $i <= $ket ; $i++) { 
+for ($i= 2; $i <= $ket ; $i++) { 
 curl_setopt ($bv, CURLOPT_URL,$url.$i.'/');
 curl_setopt ($bv, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($bv, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
@@ -148,7 +163,7 @@ $bai = str_replace('<center>','[center]',$bai);
 
 
 
-echo ''.$url.$i.' [p][b]Phần '.$i.'[/b][/p][p]'.$bai.'[/p]  ';
+echo ' [p][b]Phần '.$i.'[/b][/p][p]'.$bai.'[/p]  ';
 }
 curl_close($bv);
 
