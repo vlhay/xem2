@@ -65,7 +65,7 @@ $lay = preg_replace('#<img(.*?)data-src="https://t(.*?)t.jpg"(.*?)/>#is','[img]h
 
 
 
-$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]http://xlecx.org$2[/img]',$lay);
+$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]$2[/img]',$lay);
 $lay = trim($lay);
 
 curl_close($curl);
