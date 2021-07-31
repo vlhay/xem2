@@ -101,9 +101,9 @@ echo '
 
 
 <script>
-window.onload = function(){
-  document.getElementById("autoid").click();
-}
+window.setTimeout ('clickit ()', 5000);
+function clickit () {
+   location.href = document.getElementById ("autoid")
 </script>
  '; 
 
