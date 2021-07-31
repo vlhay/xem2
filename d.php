@@ -46,7 +46,7 @@ $lay = curl_exec($curl);
 $lay = explode('<div class="bai-viet-box"><strong>Danh sách các phần:',$lay);
 $lay = explode('<div class="bai-viet-box"><strong>Phân loại:',$lay[1]);
 
-$lay = strip_tags($lay[0],'<span>');
+$lay = strip_tags($lay[0],'<hr>');
 
 $lay = preg_replace('/TruyenTv.net|truyentv.net/i', 'TruyenHentai.Viwap.Com', $lay);
 $lay = str_replace('</p>','[/p]',$lay);
@@ -85,11 +85,13 @@ $permitted_chars = 'abcdefghik';
 // Output: 54esmdr0qf
 $ranth = substr(str_shuffle($permitted_chars), 0, 1);
  
-$kt = 'Phần';
 
-preg_match_all('/<span class="post-page-numbers current" aria-current="page">(.+?)</span>/', $lay, $matches);
 
-$ket = count($matches[0]);
+$tim = array($lay);
+
+
+
+$ket = count($tim) + 1;
 
 
 echo '
