@@ -85,7 +85,8 @@ $permitted_chars = 'abcdefghik';
 // Output: 54esmdr0qf
 $ranth = substr(str_shuffle($permitted_chars), 0, 1);
  
-
+$kt = 'Phần';
+$ket = nam_count($lay,$kt);
 
 echo '
 <h3>Viết bài</h3>
@@ -93,7 +94,7 @@ echo '
   
         <form action="http://truyenhentai.viwap.com/namon" method="post">
     Tiêu đề:<br />      
-    <input name="ten" value="Truyện sex '.$title.'"><br />
+    <input name="ten" value="Truyện sex '.$title.' updata '.$ket.' phần"><br />
     Thể loại:<br />  
     <select name="category">  
                     <optgroup label="Giải trí"> 
@@ -111,8 +112,7 @@ echo '
     Nội dung:<br />  
     <textarea name="content" id="content" rows="25">';
 
-$kt = 'Phần';
-$ket = nam_count($lay,$kt)
+
 
 
 $bv = curl_init();
