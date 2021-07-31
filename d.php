@@ -46,7 +46,7 @@ $lay = curl_exec($curl);
 $lay = explode('<div class="bai-viet-box"><strong>Danh sách các phần:',$lay);
 $lay = explode('<div class="bai-viet-box"><strong>Phân loại:',$lay[1]);
 
-$lay = strip_tags($lay[0],'<hr>');
+$lay = strip_tags($lay[0],'<a>');
 
 $lay = preg_replace('/TruyenTv.net|truyentv.net/i', 'TruyenHentai.Viwap.Com', $lay);
 $lay = str_replace('</p>','[/p]',$lay);
