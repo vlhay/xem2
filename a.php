@@ -45,8 +45,8 @@ $key = strip_tags($key[0],);
 $key = trim($key);
 
 $thumb = curl_exec($curl);
-$thumb = explode('<div class="f-desc full-text clearfix"><div style="text-align:center;">',$thumb);
-$thumb = explode('<!--<div class="full-meta clearfix">',$thumb[1]);
+$thumb = explode('<br><br><div style="text-align:center;">',$thumb);
+$thumb = explode('<!--dle_image_end--></div></div>',$thumb[1]);
 $thumb = trim($thumb[0]);
 $thumb = strip_tags($thumb,'<img>');
 $thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>http://xlecx.org$2</option>",$thumb);
@@ -54,8 +54,8 @@ $thumb = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is","<option>http://xlecx.org
 $thumb = trim($thumb);
 
 $lay = curl_exec($curl);
-$lay = explode('<div class="f-desc full-text clearfix"><div style="text-align:center;">',$lay);
-$lay = explode('<!--<div class="full-meta clearfix">',$lay[1]);
+$lay = explode('<br><br><div style="text-align:center;">',$lay);
+$lay = explode('<!--dle_image_end--></div></div>',$lay[1]);
 $lay = trim($lay[0]);
 $lay = strip_tags($lay,'<img>');
 $lay = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is",'[img]http://xlecx.org$2[/img]',$lay);
