@@ -57,6 +57,7 @@ $lay = curl_exec($curl);
 $lay = explode('<div style="text-align:center;">',$lay);
 $lay = explode('<!--dle_image_end--></div></div>',$lay[1]);
 $lay = trim($lay[0]);
+$lay = preg_replace('#<script(.*?)/script>#is',"<div>",$lay);
 $lay = strip_tags($lay,'<img>');
 $lay = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is",'[img]http://xlecx.org$2[/img]',$lay);
 $lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]http://xlecx.org$2[/img]',$lay);
