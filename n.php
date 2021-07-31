@@ -27,7 +27,7 @@ else
 $url = $_GET['url'];
 
 $url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
-$ua = $url
+$ua = $url;
 $ua = preg_replace('#https://9hentai.to/g/(.?*)/#i', 'https://cdn.9hentai.ru/images/$1/', $ua);
 $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
