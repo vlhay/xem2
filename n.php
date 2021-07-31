@@ -111,12 +111,14 @@ echo '
   <div class="listm">tag <input type="text" name="tag" value="Truyện Hentai '.$title.' full,'.$key.', truyen hentai, truyen loan luan, truyen nguoi lon, hentai dam, hentai tai mau, full color, anime sex" ></div>
 <div class="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
   <div class="list"><input type="checkbox" name="comment" value="0" > Cho phép Phân Trang</div>
-<div class="list"><center><button type="submit" class="btn btn-primary btn-block"  id="autoid" >Đăng bài</button></form></center></div>
+<div class="list"><center><button type="submit" class="btn btn-primary btn-block"  id="okbaby" >Đăng bài</button></form></center></div>
 </div>
 
 
 
-
+<script language="javascript"> 
+document.getElementById("okbaby").click(); 
+</script>
 
  '; 
 
