@@ -47,8 +47,8 @@ $thumb = explode('<div class="f-desc full-text clearfix"><div style="text-align:
 $thumb = explode('<!--<div class="full-meta clearfix">',$thumb[1]);
 $thumb = trim($thumb[0]);
 $thumb = strip_tags($thumb,'<img>');
-$thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>http://xlecx.com$2</option>",$thumb);
-$thumb = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is","<option>http://xlecx.com$2</option>",$thumb);
+$thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>http://xlecx.org$2</option>",$thumb);
+$thumb = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is","<option>http://xlecx.org$2</option>",$thumb);
 $thumb = trim($thumb);
 
 $lay = curl_exec($curl);
@@ -56,8 +56,8 @@ $lay = explode('<div class="f-desc full-text clearfix"><div style="text-align:ce
 $lay = explode('<!--<div class="full-meta clearfix">',$lay[1]);
 $lay = trim($lay[0]);
 $lay = strip_tags($lay,'<img>');
-$lay = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is",'[img]http://xlecx.com$2[/img]',$lay);
-$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]http://xlecx.com$2[/img]',$lay);
+$lay = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is",'[img]http://xlecx.org$2[/img]',$lay);
+$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]http://xlecx.org$2[/img]',$lay);
 $lay = trim($lay);
 
 curl_close($curl);
