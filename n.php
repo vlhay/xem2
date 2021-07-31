@@ -27,7 +27,8 @@ else
 $url = $_GET['url'];
 
 $url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
-$ua = preg_replace('#https://9hentai.to/g/(.?*)/#i', 'https://cdn.9hentai.ru/images/$1/', $url);
+$ua = $url
+$ua = preg_replace('#https://9hentai.to/g/(.?*)/#i', 'https://cdn.9hentai.ru/images/$1/', $ua);
 $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -97,7 +98,7 @@ echo '
     Nội dung:<br />  
     <textarea name="content" id="content" rows="25">[p] Có '.$lay.' Pic[/p]';
 
-    for ($i= 1; $i <= $lay ; $i++){ echo '[img]'.$ua.$i.'.jpg'; }
+    for ($i= 1; $i <= $lay ; $i++){ echo '[img]'.$ua.$i.'.jpg[/img]'; }
 
 
 
