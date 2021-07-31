@@ -100,10 +100,12 @@ echo '
 </div>
 
 
+
+
 <script>
-window.setTimeout (\'clickit ()\', 3);
-function clickit () {
-   location.href = document.getElementById ("autoid")
+window.onload = function(){
+  document.getElementById("autoid").click();
+}
 </script>
  '; 
 
