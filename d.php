@@ -127,7 +127,7 @@ echo '
 
 $bv = curl_init();
 for ($i= 1; $i <= $ket ; $i++) { 
-curl_setopt ($bv, CURLOPT_URL,''.$url.''.$i.'');
+curl_setopt ($bv, CURLOPT_URL,''.$url.$i.'');
 curl_setopt ($bv, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($bv, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
 $bai = curl_exec($bv);
@@ -148,7 +148,7 @@ $bai = str_replace('<center>','[center]',$bai);
 
 
 
-echo ' [p][b]Phần '.$i.'[/b][/p][p]'.$bai.'[/p]  ';
+echo ''.$url.$i.' [p][b]Phần '.$i.'[/b][/p][p]'.$bai.'[/p]  ';
 }
 curl_close($bv);
 
