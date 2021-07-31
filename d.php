@@ -13,7 +13,7 @@
     <body>
 	    <?php
 
-  include_once 'func.php';
+  
 
 
 if (!isset($_GET['url']))
@@ -120,7 +120,7 @@ echo '
             </select>  
     <br />
     Nội dung:<br />  
-    <textarea name="content" id="content" rows="25">'.$lay.'';
+    <textarea name="content" id="content" rows="25">';
 
 
 
