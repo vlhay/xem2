@@ -21,8 +21,10 @@ if (!isset($_GET['url']))
 {
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <br> lêch xlecx.org<br>
-<form method="get">Url: <input name="url" type="text"><input type="submit" value="Leech" >
-<input name="max" type="text" value="">
+<form method="get">Url: <input name="url" type="text">
+<br>
+<input name="max" type="text" value=""><br><input type="submit" value="Leech" >
+
 </form>
 
 
