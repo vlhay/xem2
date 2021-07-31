@@ -1,6 +1,6 @@
 <?php
 // Đếm số kí tự
-function duc_count($data,$kt){
+function nam_count($data,$kt){
 $chars=str_split($data);
 $count=0;
 foreach($chars as &$char)
