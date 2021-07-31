@@ -60,7 +60,7 @@ $lay = explode('</noscript></a></div></div></div><div class="container" id="rela
 $lay = trim($lay[0]);
 $lay = preg_replace('#<script(.*?)/script>#is',"<div>",$lay);
 $lay = strip_tags($lay,'<img>');
-$lay = preg_replace('#<img(.*?)data-src="(.*?)"(.*?)/>#is','[img]$2[/img]',$lay);
+$lay = preg_replace('#<img(.*?)data-src="https://t(.*?)t.jpg"(.*?)/>#is','[img]https://i$2.jpg[/img]',$lay);
 
 
 
