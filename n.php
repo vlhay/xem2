@@ -59,7 +59,7 @@ $lay = explode('<div class="thumbs"><div class="thumb-container">',$lay);
 $lay = explode('</noscript></a></div></div></div><div class="container" id="related-container">',$lay[1]);
 $lay = trim($lay[0]);
 $lay = preg_replace('#<script(.*?)/script>#is',"<div>",$lay);
-$lay = strip_tags($lay,'<img class="lazyload">');
+$lay = strip_tags($lay,'<img>');
 $lay = preg_replace('#<img(.*?)data-src="(.*?)"(.*?)/>#is','[img]$2[/img]',$lay);
 
 
@@ -91,7 +91,7 @@ echo '
      
 		        <select name="thumb">  
                     <optgroup label="Chuyên Mục">   
-                                    '.$thumb.'
+                                    <option>'.$thumb.'</option>
                             </optgroup>
             </select> 
     <br />
