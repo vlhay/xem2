@@ -131,11 +131,20 @@ echo '
 <div class="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
   <div class="list"><input type="checkbox" name="comment" value="0" > Cho phép Phân Trang</div>
 <div class="list"><center><button type="submit" class="btn btn-primary btn-block"  id="okbaby" >Đăng bài</button></form></center></div>
-</div>
-
-<script language="javascript"> 
+</div>';
+if ($dau <= $max) {
+   echo '<script language="javascript"> 
 document.getElementById("okbaby").click(); 
-</script>
+</script>';
+} else {
+   echo''
+}
+
+
+
+
+
+
 
 
  '; 
