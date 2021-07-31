@@ -25,15 +25,17 @@ else
 {
 
 $url = $_GET['url'];
+
 $url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
+$ua = preg_replace('#https://9hentai.to/g/(.?*)/#i', 'https://cdn.9hentai.ru/images/$1/', $url);
 $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
 $title = curl_exec($curl);
-$title = explode('<title>',$title);
-$title = explode('</title>',$title[1]);
-$title = explode('&raquo;',$title[0]);
+$title = explode('<h1>',$title);
+$title = explode('</h1>',$title[1]);
+$title = explode('-',$title[0]);
 $title = trim($title[0]);
 
 
@@ -46,8 +48,9 @@ $key = strip_tags($key[0],);
 $key = trim($key);
 
 $thumb = curl_exec($curl);
-$thumb = explode('<meta itemprop="image" content="',$thumb);
-$thumb = explode('" /><meta property="og:type" content="article" />',$thumb[1]);
+$thumb = explode('<meta property="og:image" content="',$thumb);
+$thumb = explode('" />
+<meta name="twitter:title"',$thumb[1]);
 $thumb = trim($thumb[0]);
 $thumb = strip_tags($thumb,'<img>');
 $thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>http://xlecx.org$2</option>",$thumb);
@@ -55,16 +58,12 @@ $thumb = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is","<option>http://xlecx.org
 $thumb = trim($thumb);
 
 $lay = curl_exec($curl);
-$lay = explode('<div class="thumbs"><div class="thumb-container">',$lay);
-$lay = explode('</noscript></a></div></div></div><div class="container" id="related-container">',$lay[1]);
+$lay = explode('<div>',$lay);
+$lay = explode(' pages</div>',$lay[1]);
 $lay = trim($lay[0]);
 $lay = preg_replace('#<script(.*?)/script>#is',"<div>",$lay);
 $lay = strip_tags($lay,'<img>');
 $lay = preg_replace('#<img(.*?)data-src="https://t(.*?)t.jpg"(.*?)/>#is','[img]https://i$2.jpg[/img]',$lay);
-
-
-
-
 $lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]$2[/img]',$lay);
 $lay = trim($lay);
 
@@ -96,7 +95,15 @@ echo '
             </select> 
     <br />
     Nội dung:<br />  
-    <textarea name="content" id="content" rows="25">'.$lay.'</textarea>
+    <textarea name="content" id="content" rows="25">[p] Có '.$lay.' Pic[/p]';
+
+    for ($i= 1; $i <= $lay ; $i++){ echo '[img]'.$ua.$i.'.jpg'; }
+
+
+
+
+
+     echo '   </textarea>
     <br />
       Từ Khóa:<br />  
   <div class="listm">tag <input type="text" name="tag" value="Truyện Hentai '.$title.' full,'.$key.', truyen hentai, truyen loan luan, truyen nguoi lon, hentai dam, hentai tai mau, full color, anime sex" ></div>
