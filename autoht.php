@@ -52,6 +52,7 @@ $title = explode('-',$title[0]);
 $title = trim($title[0]);
 
 $dau = str_replace('https://9hentai.to/g/', '', $ua);
+$dau = str_replace('/', '', $dau);
 $ua = str_replace('https://9hentai.to/g/', 'https://cdn.9hentai.ru/images/', $ua);
 
 
