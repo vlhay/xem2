@@ -17,7 +17,9 @@
 	    
 if (!isset($_GET['url']))
 {
-echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="get">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<br> lêch xlecx.org<br>
+<form method="get">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
 }
 else
 {
