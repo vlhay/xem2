@@ -41,7 +41,7 @@ $key = curl_exec($curl);
 $key = explode('<meta name="news_keywords" content="',$key);
 $key = explode('">
 <meta property="og:image"',$key[1]);
-$key = strip_tags($key[0],);
+$key = strip_tags($key[0]);
 $key = trim($key);
 
 $thumb = curl_exec($curl);
