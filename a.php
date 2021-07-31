@@ -102,11 +102,7 @@ echo '
 
 
 
-<script>
-window.onload = function(){
-  document.getElementById("autoid").click();
-}
-</script>
+
  '; 
 
 }
