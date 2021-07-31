@@ -33,16 +33,17 @@ $title = trim($title[0]);
 
 
 $key = curl_exec($curl);
-$key = explode('Thể loại:</strong> <em>',$key);
-$key = explode('<div class="bai-viet-box"><span style="font-size: 10px">',$key[1]);
+$key = explode('<div class="bai-viet-box"><strong>Phân loại:',$key);
+$key = explode('<div class="phdr"><h2>Bình luận</h2></div>',$key[1]);
 $key = strip_tags($key[0],);
 $key = trim($key);
 
 $lay = curl_exec($curl);
-$lay = explode('<div style="background:#f7f7f7;border:1px solid #ddd;color:#333;margin-bottom:5px;line-height:150%;padding:5px;font-size:14px">',$lay);
-$lay = explode('<div class="bai-viet-box"><strong>Thể loại:',$lay[1]);
+$lay = explode('<div class="ndtruyen">',$lay);
+$lay = explode('<div class="bai-viet-box"><strong>Phân loại:',$lay[1]);
 $lay = strip_tags($lay[0],'');
-
+$lay = strip_tags($lay,'<p><center><strong><em>');
+$lay = preg_replace('/TruyenTv.net|truyentv.net/i', '<b>TruyenHentai</b>', $lay);
 $lay = trim($lay);
 
 curl_close($curl);
