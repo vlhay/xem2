@@ -129,7 +129,7 @@ echo '
   <input name="dau" type="text" value="'.$dau.'">
     <input name="max" type="text" value="'.$max.'">
 <div class="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
-  <div class="list"><input type="checkbox" name="comment" value="0" > Cho phép Phân Trang</div>
+  <div class="list"><input type="checkbox" name="comment" value="1" > Cho phép Phân Trang</div>
 <div class="list"><center><button type="submit" class="btn btn-primary btn-block"  id="okbaby" >Đăng bài</button></form></center></div>
 </div>';
 if ($dau <= $max) {
