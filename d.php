@@ -96,8 +96,10 @@ $ket = count($tim) + 1;
 
 
 preg_match_all('/Phần(.+?)\<\/a\>/', $lay, $matches);
+$ket = count($matches[0]) + 1;
 echo '<pre>';
 print_r($matches);
+
 echo '</pre>';
 
 
@@ -129,7 +131,7 @@ echo '
 
 
 $bv = curl_init();
-for ($i= 1; $i <= $ket ; $i++) { 
+for ($i= 1; $i <= 1 ; $i++) { 
 curl_setopt ($bv, CURLOPT_URL, 'http://hentailx.com/doc-truyen/'.$vll.'-chapter-'.$i.'.html');
 curl_setopt ($bv, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($bv, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
