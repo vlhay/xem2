@@ -41,8 +41,8 @@ $key = trim($key);
 $lay = curl_exec($curl);
 $lay = explode('<div class="ndtruyen">',$lay);
 $lay = explode('<div class="bai-viet-box"><strong>Phân loại:',$lay[1]);
-///$lay = strip_tags($lay[0],'');
-$lay = strip_tags($lay,'<p>,<center>,<strong>,<em>');
+$lay = strip_tags($lay[0],'<p>,<center>,<strong>,<em>');
+
 $lay = preg_replace('/TruyenTv.net|truyentv.net/i', '<b>TruyenHentai.Viwap.Com</b>', $lay);
 $lay = trim($lay);
 
