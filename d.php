@@ -110,7 +110,7 @@ echo '
             </select>  
     <br />
     Nội dung:<br />  
-    <textarea name="content" id="content" rows="25">';
+    <textarea name="content" id="content" rows="25">'.$lay.'';
 
 
 
