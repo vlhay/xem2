@@ -137,17 +137,13 @@ if ($dau <= $max) {
 document.getElementById("okbaby").click(); 
 </script>';
 } else {
-   echo''
+   echo'';
 }
 
 
 
 
 
-
-
-
- '; 
 
 }
 
