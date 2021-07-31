@@ -45,7 +45,7 @@ $key = strip_tags($key[0],);
 $key = trim($key);
 
 $thumb = curl_exec($curl);
-$thumb = explode('<br><br><div style="text-align:center;">',$thumb);
+$thumb = explode('<div style="text-align:center;">',$thumb);
 $thumb = explode('<!--dle_image_end--></div></div>',$thumb[1]);
 $thumb = trim($thumb[0]);
 $thumb = strip_tags($thumb,'<img>');
@@ -54,7 +54,7 @@ $thumb = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is","<option>http://xlecx.org
 $thumb = trim($thumb);
 
 $lay = curl_exec($curl);
-$lay = explode('<br><br><div style="text-align:center;">',$lay);
+$lay = explode('<div style="text-align:center;">',$lay);
 $lay = explode('<!--dle_image_end--></div></div>',$lay[1]);
 $lay = trim($lay[0]);
 $lay = strip_tags($lay,'<img>');
