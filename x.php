@@ -22,6 +22,7 @@ $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
+
 $title = curl_exec($curl);
 $title = explode('<title>',$title);
 $title = explode('</title>',$title[1]);
@@ -71,7 +72,7 @@ echo '
             </select>  
     <br />
     Nội dung:<br />  
-    <textarea name="content" id="content" rows="25">'.$tt.' 
+    <textarea name="content" id="content" rows="25">'.$tt.' '.$url.' 
     '.$lay.'</textarea>
     <br />
     <div class="listm">tag <input type="text" name="tag" value="'.$title.', gai xinh xinh, gai xinh 18+, gai dep, gai goi cam, gai goi cao cap, gai lam tien, massage sung suong, dit toat hang" ></div>
