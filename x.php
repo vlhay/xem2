@@ -1,109 +1,87 @@
+ <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        
+        <title>MiBlog</title>
+        <link type="text/css" rel="stylesheet" href="http://cuocsong.viwap.com/css/admin-style.css?v=472256984">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+
 <?php
-set_time_limit(0);
-error_reporting(0);
-function fetch_value($str, $find_start = '', $find_end = '')
+if (!isset($_GET['url']))
 {
-    if ($find_start == '') {
-        return '';
-    }
-    $start = strpos($str, $find_start);
-    if ($start === false) {
-        return '';
-    }
-    $length = strlen($find_start);
-    $substr = substr($str, $start + $length);
-    if ($find_end == '') {
-        return $substr;
-    }
-    $end = strpos($substr, $find_end);
-    if ($end === false) {
-        return $substr;
-    }
-    return substr($substr, 0, $end);
-}
-function getXvideo($url)
-{
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Linux; Android 4.4.2; en-us; SAMSUNG SM-G900T Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.6 Chrome/28.0.1500.94 Mobile Safari/537.36");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    $xx = curl_exec($ch);
-    curl_close($ch);
-    unset($ch);
-
-
-
-    if (fetch_value($xx, "html5player.setVideoUrlHigh('", "');") != "") {
-        $result['error']   = 0;
-        $result['mp4low']  = fetch_value($xx, "html5player.setVideoUrlLow('", "');");
-        $result['mp4high'] = fetch_value($xx, "html5player.setVideoUrlHigh('", "');");
-        $result['image']   = fetch_value($xx, "html5player.setThumbUrl('", "');");
-        $result['title']   = fetch_value($xx, "html5player.setVideoTitle('", "');");
-    } else {
-        $result['error'] = 2;
-        $result['msg']   = 'Có lỗi xảy ra !! Thử lại sau nhé !';
-    }
-    return json_encode($result);
-}
-
-//if (!isset($_GET['url']))
-//{
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form method="get">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
-//}
-//else
-//{
+}
+else
+{
 
-    $url = $_GET['url'];
-    //echo getXvideo($url);
+$url = $_GET['url'];
+$url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
+$curl = curl_init();
+curl_setopt ($curl, CURLOPT_URL, $url);
+curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
+$title = curl_exec($curl);
+$title = explode('<title>',$title);
+$title = explode('</title>',$title[1]);
+$title = trim($title[0]);
+$title = explode('- Gai xinh -',$title);
+$title = trim($title[0]);
+
+$lay = curl_exec($curl);
+$tt = $lay;
+$tt = explode("Thông tin cơ bản",$tt);
+$tt = explode("Gái gọi liên quan",$tt[1]);
+$tt = trim($tt[0]);
+$tt = strip_tags($tt,'<p>');
+
+
+$lay = explode("Click xem ảnh",$lay);
+$lay = explode("Thông tin cơ bản",$lay[1]);
+$lay = trim($lay[0]);
+$lay = strip_tags($lay,'<img>');
+$thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>$2</option>",$lay);
+$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"[img]$2[/img]
+    ",$lay);
+$lay =  str_ireplace('GaiGu.Pro','Truyenhentai.ViWap.Com' ,$lay);
+
+curl_close($curl);
+
+
+echo '
+<h3>Viết bài</h3>
+<div class="box">
   
-//}
+        <form action="http://truyenhentai.viwap.com/namon" method="post">
+    Tiêu đề:<br />      
+    <input name="ten" value="Bộ Ảnh Sex Gái Gọi '.$title.'"><br />
+    Thể loại:<br />  
+    <select name="category">  
+                    <optgroup label="Giải trí"> 
+                                    <option value="4">Ảnh XXX</option>
+                            </optgroup>
+            </select>  
+    <br />
+    Thumbnail<br />  
+      <select name="thumb">  
+           <optgroup>   
+    '.$thumb.'
+                     </optgroup>            
+            </select>  
+    <br />
+    Nội dung:<br />  
+    <textarea name="content" id="content" rows="25">'.$tt.' 
+    '.$lay.'</textarea>
+    <br />
+    <div class="listm">tag <input type="text" name="tag" value="'.$title.', gai xinh xinh, gai xinh 18+, gai dep, gai goi cam, gai goi cao cap, gai lam tien, massage sung suong, dit toat hang" ></div>
+<div class="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
+  <div class="list"><input type="checkbox" name="comment" value="0" > Cho phép Phân Trang</div>
+<div class="list"><center><button type="submit" class="btn btn-primary btn-block">Đăng bài</button></form></center></div>
+</div> '; 
+
+
+
+}
+
 ?>
-<style>
-body{height:100%;margin:0;overflow:hidden;position:absolute;width:100%}
-video{min-height:100%;min-width:100%;position:absolute}
-.jw-logo {width:150px!important;height:150px!important;margin:15px!important}
-.jw-skin-glow .jw-background-color{background:rgba(222, 56, 87, 0.4) !important}
-
-@media only screen and (max-width:1440px) {
-.jw-logo {width:90px!important;height:90px!important;margin:10px!important}
-}
-@media only screen and (max-width:1000px) {
-.jw-logo {width:70px!important;height:70px!important;margin:5px!important}
-}
-@media only screen and (max-width:500px) {
-.jw-logo {width:50px!important;height:50px!important}
-.loop-actions .orderby{display:none;}
-}
-
-
-</style>
-
-<script src="/jwplayer.js"></script>
-<script>jwplayer.key="MBvrieqNdmVL4jV0x6LPJ0wKB/Nbz2Qq/lqm3g==";</script>
-
-<script src="http://animehay.tv/themes/AH_1.2/all/js/init.js?v=8.0.9"></script>
-
-<div id='player'></div>
-<script type='text/javascript'>
-jwplayer('player').setup({
-file: '<?php
-echo json_decode(getXvideo($url))->mp4high;
-?>',
-image: "https://i.imgur.com/p5S07MQ.jpg?1",
-width: "100%",
-height: "100%",
-aspectratio: "16:9",
-primary: "html5",
-
-skin: 'five',
-logo: {
-file: "https://i.imgur.com/MmI5H39.png",
-link: 'http://Cuocsong.viwap.com',
-abouttext:"Cuocsong.viwap.com",aboutlink:"http://www.cuocsong.viwap.com",
-}
-});
-</script>
-
