@@ -67,7 +67,7 @@ echo '
             </select>  
     <br />
     Nội dung:<br />  
-    <textarea name="content" id="content" rows="25">
+    <textarea name="content" id="content" rows="25">'.$url.'
     '.$lay.'</textarea>
     <br />
     <div class="listm">tag <input type="text" name="tag" value="ảnh sex '.$title.', gai sex, gai xinh 18+,gai dep, gai goi cam, gai goi cao cap, gai lam tien, massage sung suong, dit toat hang" ></div>
