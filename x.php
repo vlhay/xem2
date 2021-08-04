@@ -97,22 +97,27 @@ $lay = trim($lay);
 curl_close($curl);
 
 echo '
-<div id="main">      
-                <h3>Viết bài</h3>
+
+
+
+
+<h3>Viết bài</h3>
 <div class="box">
   
         <form action="http://truyenhentai.viwap.com/namon" method="post">
     Tiêu đề:<br />      
-    <input name="title" value="Ảnh Sex '.$title.'"><br />
-    Thể loại:<br />  
+    
+    <input name="ten" value="Truyện Hentai '.$title.'"><br />
+
     <select name="category">  
-                    <optgroup label="Chuyên Mục">   
-                                    <option value="'.$cmm.'">Truyện Chữ</option>
+                    <optgroup label="Giải trí"> 
+                                    <option value="4">Ảnh Girl Xinh</option>
                             </optgroup>
             </select>  
     <br />
     Thumbnail<br />  
-    <select name="thumbnail">  
+     
+                <select name="thumb">  
                     <optgroup label="Chuyên Mục">   
                                    '.$thumb.'
                             </optgroup>
@@ -122,13 +127,19 @@ echo '
     <textarea name="content" id="content" rows="25">'.$lay.'[p]Nguồn : '.$nguon.'[/p]</textarea>
     <br />
       Từ Khóa:<br />  
-    <input name="tag" rows="25" value="'.$title.','.$key.', ảnh sex, ảnh gái gọi, gái xinh, gái cập nhật, ảnh sex dep, anhsexdep"><br>
-      <input type="checkbox" name="phantrang" value="0" > Cho phép phan trang<br>
-    <input type="checkbox" name="html" value="1" checked> Cho phép html<br>
-    <input type="checkbox" name="allowComment" value="1" checked> Cho phép bình luận
-      <div class="frm-buttons"><button>Đăng bài</button></div>
-    </form>  
-</div>  '; 
+  <div class="listm">tag <input type="text" name="tag" value="'.$title.','.$key.', ảnh sex, ảnh gái gọi, gái xinh, gái cập nhật, ảnh sex dep, anhsexdep"></div>
+<div class="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
+  <div class="list"><input type="checkbox" name="comment" value="0" > Cho phép Phân Trang</div>
+<div class="list"><center><button type="submit" class="btn btn-primary btn-block"  id="okbaby" >Đăng bài</button></form></center></div>
+</div>
+
+
+
+
+
+
+
+ '; 
 
 }
 
