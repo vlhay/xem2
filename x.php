@@ -31,14 +31,8 @@ $title = explode('| MauLon',$title);
 $title = trim($title[0]);
 
 $lay = curl_exec($curl);
-$tt = $lay;
-$tt = explode("Thông tin cơ bản",$tt);
-$tt = explode("Gái gọi liên quan",$tt[1]);
-$tt = trim($tt[0]);
-$tt = strip_tags($tt,'<p>');
 
-
-$lay = explode("<div class="ci" style="text-align: center;"><a name='more'>",$lay);
+$lay = explode('<div class="ci" style="text-align: center;"><a name=\'more\'>',$lay);
 $lay = explode("<div class='post-info-icon label'>",$lay[1]);
 $lay = trim($lay[0]);
 $lay = strip_tags($lay,'<img>');
@@ -47,7 +41,7 @@ $lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"[img]$2[/img]",$lay);
 $thumb = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is","<option>$2</option>",$lay);
 $lay = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is","[img]$2[/img]",$lay);
 $lay =  str_ireplace('GaiGu.Pro','Truyenhentai.ViWap.Com' ,$lay);
-
+$lay = trim($lay[0]);
 curl_close($curl);
 
 
