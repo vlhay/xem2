@@ -32,7 +32,7 @@ $title = trim($title[0]);
 
 $lay = curl_exec($curl);
 
-$lay = explode('<div class="ci" style="text-align: center;"><a name=\'more\'>',$lay);
+$lay = explode('<div class="ci" style="text-align: center;">',$lay);
 $lay = explode("<div class='post-info-icon label'>",$lay[1]);
 $lay = trim($lay[0]);
 $lay = strip_tags($lay,'<img>');
