@@ -27,7 +27,7 @@ $title = curl_exec($curl);
 $title = explode('<title>',$title);
 $title = explode('</title>',$title[1]);
 $title = trim($title[0]);
-$title = explode('- Gai xinh -',$title);
+$title = explode('| MauLon',$title);
 $title = trim($title[0]);
 
 $lay = curl_exec($curl);
@@ -38,8 +38,8 @@ $tt = trim($tt[0]);
 $tt = strip_tags($tt,'<p>');
 
 
-$lay = explode("Click xem ảnh",$lay);
-$lay = explode("Thông tin cơ bản",$lay[1]);
+$lay = explode("<div class="ci" style="text-align: center;"><a name='more'>",$lay);
+$lay = explode("<div class='post-info-icon label'>",$lay[1]);
 $lay = trim($lay[0]);
 $lay = strip_tags($lay,'<img>');
 $thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>$2</option>",$lay);
@@ -56,7 +56,7 @@ echo '
   
         <form action="http://truyenhentai.viwap.com/namon" method="post">
     Tiêu đề:<br />      
-    <input name="ten" value="Bộ Ảnh Sex Gái Gọi '.$title.'"><br />
+    <input name="ten" value="Bộ Ảnh Sex '.$title.'"><br />
     Thể loại:<br />  
     <select name="category">  
                     <optgroup label="Giải trí"> 
@@ -75,7 +75,7 @@ echo '
     <textarea name="content" id="content" rows="25">'.$tt.' '.$url.' 
     '.$lay.'</textarea>
     <br />
-    <div class="listm">tag <input type="text" name="tag" value="'.$title.', gai xinh xinh, gai xinh 18+, gai dep, gai goi cam, gai goi cao cap, gai lam tien, massage sung suong, dit toat hang" ></div>
+    <div class="listm">tag <input type="text" name="tag" value="ảnh sex '.$title.', gai sex, gai xinh 18+,gai dep, gai goi cam, gai goi cao cap, gai lam tien, massage sung suong, dit toat hang" ></div>
 <div class="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
   <div class="list"><input type="checkbox" name="comment" value="0" > Cho phép Phân Trang</div>
 <div class="list"><center><button type="submit" class="btn btn-primary btn-block">Đăng bài</button></form></center></div>
