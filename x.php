@@ -43,8 +43,9 @@ $lay = explode("<div class='post-info-icon label'>",$lay[1]);
 $lay = trim($lay[0]);
 $lay = strip_tags($lay,'<img>');
 $thumb = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"<option>$2</option>",$lay);
-$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"[img]$2[/img]
-    ",$lay);
+$lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is',"[img]$2[/img]",$lay);
+$thumb = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is","<option>$2</option>",$lay);
+$lay = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is","[img]$2[/img]",$lay);
 $lay =  str_ireplace('GaiGu.Pro','Truyenhentai.ViWap.Com' ,$lay);
 
 curl_close($curl);
