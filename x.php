@@ -36,7 +36,7 @@ $cl ='<!-- .entry-content -->';
 $cmm = "4";
 $dk ='<h5 class="entry-cat">Khu vực:';
 $ck = '<h5 class="entry-date">';
-$tit ='- Gaigoi.org';
+$tit ='- GoiKieu.Com';
 }
 elseif ($nguon == 'girlchanh.com')
  {
@@ -91,7 +91,7 @@ $lay = trim($lay[0]);
 $lay = strip_tags($lay,'<img><p>');
 $lay = preg_replace("#<img(.*?)src='(.*?)'(.*?)>#is",'[img]$2[/img]',$lay);
 $lay = preg_replace('#<img(.*?)src="(.*?)"(.*?)>#is','[img]$2[/img]',$lay);
-$lay = preg_replace('#<(.*?)>#is','[$1]',$lay);
+$lay = preg_replace('#<(.*?)p(.*?)>#is','[$1p]',$lay);
 $lay = trim($lay);
 
 curl_close($curl);
