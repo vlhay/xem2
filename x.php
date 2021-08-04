@@ -15,19 +15,16 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><form 
 }
 else
 {
-
 $url = $_GET['url'];
 $url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
 $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
-
 $title = curl_exec($curl);
 $title = explode('<title>',$title);
 $title = explode('</title>',$title[1]);
-$title = trim($title[0]);
-$title = explode('| MauLon',$title);
+$title = explode('|',$title[0]);
 $title = trim($title[0]);
 
 $lay = curl_exec($curl);
