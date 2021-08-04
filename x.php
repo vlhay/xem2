@@ -107,7 +107,7 @@ echo '
         <form action="http://truyenhentai.viwap.com/namon" method="post">
     Tiêu đề:<br />      
     
-    <input name="ten" value="Truyện Hentai '.$title.'"><br />
+    <input name="ten" value="Bộ ảnh Gái gọi '.$title.'"><br />
 
     <select name="category">  
                     <optgroup label="Giải trí"> 
