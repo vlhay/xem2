@@ -47,9 +47,8 @@ $ua = str_replace('https://9hentai.to/g/', 'https://cdn.9hentai.ru/images/', $ua
 $content = file_get_contents('a.txt');
 $xcontent = explode('@',$content);
 $idmot = $xcontent[1];
-$idhai = $content[2];
-$content = str_replace("@'.$idmot.'", '', $content);
-$content = trim($content);
+$idhai = $xcontent[2];
+$content = str_replace($xcontent[1], '', $content);
 if (file_exists('a.txt'))
 {
     unlink('a.txt');
