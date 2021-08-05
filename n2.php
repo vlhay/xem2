@@ -129,9 +129,6 @@ echo '
 
 
 
-<script language="javascript"> 
-document.getElementById("okbaby").click(); 
-</script>
 
  '; 
 
