@@ -37,8 +37,8 @@ $ua = str_replace('https://9hentai.to/g/', 'https://cdn.9hentai.ru/images/', $ua
 
 
 $content = file_get_contents('a.txt');
-$content = explode('@',$content);
-$idmot = $content[1];
+$xcontent = explode('@',$content);
+$idmot = $xcontent[1];
 $idhai = $content[2];
 $content = str_replace('@'.$idmot, '', $content);
 $content = trim($content);
