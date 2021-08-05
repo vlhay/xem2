@@ -48,7 +48,7 @@ $content = file_get_contents('a.txt');
 $xcontent = explode('@',$content);
 $idmot = $xcontent[1];
 $idhai = $content[2];
-$content = str_replace('@'.$idmot, '', $content);
+$content = str_replace('@'.$idmot'', '', $content);
 $content = trim($content);
 if (file_exists('a.txt'))
 {
