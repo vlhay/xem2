@@ -18,13 +18,20 @@
 if (!isset($_GET['url']))
 {
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<br> leech xlecx.org<br>
-<form method="get">Url: <input name="url" type="text"><input type="submit" value="Leech" ></form>';
+<br> lêch xlecx.org<br>
+<form method="get">Url: <input name="url" type="text">
+<br>
+<input name="max" type="text" value=""><br><input type="submit" value="Leech" >
+
+</form>
+';
 }
 else
 {
 
 $url = $_GET['url'];
+$max = $_GET['max'];
+
 
 $url = preg_replace('#(https://|http://)(.*)#i', '$1$2', $url);
 $ua = $url;
@@ -32,7 +39,8 @@ $curl = curl_init();
 curl_setopt ($curl, CURLOPT_URL, $url);
 curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; U; Android 4.1.2; vi; SAMSUNG Build/JZO54K) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.5.418 U3/0.8.0 Mobile Safari/533.1');
-
+$dau = str_replace('https://9hentai.to/g/', '', $ua);
+$dau = str_replace('/', '', $dau);
 $ua = str_replace('https://9hentai.to/g/', 'https://cdn.9hentai.ru/images/', $ua);
 
 
@@ -120,6 +128,8 @@ echo '
 
      echo '   </textarea>
     <br />
+    <input name="dau" type="text" value="'.$dau.'">
+    <input name="max" type="text" value="'.$max.'">
       Từ Khóa:<br />  
 
 <div class="list"><input type="checkbox" name="comment" value="1" checked> Cho phép bình luận</div>
