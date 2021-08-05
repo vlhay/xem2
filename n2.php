@@ -106,6 +106,9 @@ echo '
                             </optgroup>
             </select> 
     <br />
+
+'.$content.'
+
     Nội dung:<br />  
     <textarea name="content" id="content" rows="25">[p] Có '.$lay.' Pic[/p]';
 
