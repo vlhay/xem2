@@ -137,7 +137,9 @@ echo '
 <div class="list"><center><button type="submit" class="btn btn-primary btn-block"  id="okbaby" >Đăng bài</button></form></center></div>
 </div>
 
-
+<script language="javascript"> 
+document.getElementById("okbaby").click(); 
+</script>
 
 
  '; 
